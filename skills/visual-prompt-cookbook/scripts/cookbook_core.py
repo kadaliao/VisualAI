@@ -183,3 +183,20 @@ def find_style(index: dict[str, Any], query: str) -> dict[str, Any]:
         names = ", ".join(f"{entry['id']}:{entry['style_slug']}" for entry in matches[:8])
         raise ValueError(f"Multiple styles matched {query!r}: {names}")
     raise ValueError(f"No style matched {query!r}")
+
+
+def dashboard_paths(skill_root: Path | None = None) -> dict[str, Path]:
+    root = skill_root or default_skill_root()
+    return {
+        "dashboard_root": root / "assets" / "dashboard",
+        "cookbook_root": root / "assets" / "cookbook",
+        "state_dir": root / ".dashboard-state",
+    }
+
+
+def record_dashboard_selection(state_dir: Path, payload: dict[str, Any]) -> dict[str, Any]:
+    event = {"type": "style_selected", "timestamp": utc_now_iso(), **payload}
+    state_dir.mkdir(parents=True, exist_ok=True)
+    with (state_dir / "events.jsonl").open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(event, ensure_ascii=False) + "\n")
+    return event
