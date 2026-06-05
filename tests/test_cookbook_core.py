@@ -58,6 +58,27 @@ class PromptRenderTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Missing values: MAIN_TEXT"):
             core.render_prompt(sample_style(), {"SUBJECT": "a chef", "ASPECT_RATIO": "9:16"})
 
+    def test_localize_dashboard_style_adds_chinese_display_layer(self) -> None:
+        style = sample_style()
+        localized = core.localize_dashboard_style(
+            style,
+            "zh-CN",
+            locale={
+                "styles": {
+                    "mono-test-poster": {
+                        "name": "单色测试海报",
+                        "summary": "锐利的测试海报风格。",
+                    }
+                }
+            },
+        )
+
+        self.assertEqual(localized["style_name"], "Mono Test Poster")
+        self.assertEqual(localized["display"]["name"], "单色测试海报")
+        self.assertEqual(localized["display"]["summary"], "锐利的测试海报风格。")
+        self.assertEqual(localized["display"]["environment_variables"]["SUBJECT"]["label"], "主体")
+        self.assertIn("主角", localized["display"]["environment_variables"]["SUBJECT"]["description"])
+
     def test_find_style_by_id_or_slug(self) -> None:
         index = {
             "styles": [

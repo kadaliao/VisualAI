@@ -1,0 +1,228 @@
+{
+  "styles": {
+    "acid-lime-3d-streetwear-type-poster-style": {
+      "name": "酸橙 3D 街头字海报风格",
+      "summary": "C4D 街头穿搭广告海报系统：浅色棚拍空间、巨大黑色字块、酸橙马克笔笔触、贴纸徽章、时尚工具道具、低广角人物和干净产品光。"
+    },
+    "analog-sticker-diary-portrait-poster-style": {
+      "name": "复古贴纸日记肖像海报风格",
+      "summary": "带怀旧感的模拟日记拼贴肖像系统：侧脸插画主体、奶油色方格纸、贴纸化私人物件、做旧橙色手写字和强烈扫描印刷纹理。"
+    },
+    "backseat-transit-doodle-letter-poster-style": {
+      "name": "后座交通涂鸦字母海报风格",
+      "summary": "把乘客后座视角的真实交通照片改造成高能旅行海报：背影主体、电黄色轮廓光、夸张黄橙手绘字、漫画射线、紫色音乐符号、贴纸图标和青白云形动线。"
+    },
+    "black-cutout-food-card-ad-style": {
+      "name": "黑底剪纸食物卡片广告风格",
+      "summary": "黑色背景上的街头小吃广告风格：不规则奶油纸卡、巨大手刷中文标题、裁切食物摄影、小价格徽章、暖红黄点缀和手作印刷质感。"
+    },
+    "blue-bubble-fisheye-action-poster-style": {
+      "name": "蓝色泡泡鱼眼动作海报风格",
+      "summary": "清爽白底青年文化动作海报：矩形鱼眼照片、巨大圆润皇家蓝标题字、冲破画框的前景尺度、小蓝色编辑说明和一个红色手绘标注圈。"
+    },
+    "blue-chinese-perspective-type-canyon-style": {
+      "name": "蓝色中文透视字谷海报风格",
+      "summary": "中文排版海报系统：极端单点透视走廊中，饱和蓝色中央梯形平面承载堆叠白色大字，黑色侧墙布满扭曲的白色与浅灰辅助中文。"
+    },
+    "blue-hud-macro-product-poster": {
+      "name": "蓝色 HUD 微距科技产品海报",
+      "summary": "高密度创作者科技广告风格：微距 3D 硬件主角、巨大罗纹手套、电蓝 HUD 面板、超大压缩字体、光泽玻璃卡片和一个暖金性能徽章。"
+    },
+    "blue-lime-kinetic-comic-type-poster-style": {
+      "name": "蓝绿动感漫画字海报风格",
+      "summary": "高声量平面漫画海报系统：电蓝网格纸、超大霓虹绿对话框几何、厚重黑色字块、锐利黄色底板、放射动作线和粗粝印刷纹理。标题就是画面主角。"
+    },
+    "bold-anime-reaction-thumbnail-style": {
+      "name": "强冲击动漫反应缩略图风格",
+      "summary": "高冲击动漫网页缩略图系统：夸张反应角色、醒目黄色标题字、硬黑阴影、分屏构图、小型发光动作插图和干净赛璐璐插画。"
+    },
+    "bold-block-mascot-poster-style": {
+      "name": "粗块吉祥物海报风格",
+      "summary": "密集平面海报系统：巨大黑色展示字、厚实白色吉祥物、粗漫画轮廓、倾斜青色或薄荷色面板、紧凑徽章、细小红色点缀和干净米白印刷底。"
+    },
+    "chromatic-fisheye-orbit-pop-poster-style": {
+      "name": "炫彩鱼眼轨道流行海报风格",
+      "summary": "高亮流行海报系统：极端鱼眼摄影、凸起玻璃穹顶中心、环绕式巨大字体、热红洋红橙字色、水蓝色差光弧和轻微模拟印刷纹理。"
+    },
+    "clean-triptych-travel-vlog-thumbnail-style": {
+      "name": "干净三联旅行 Vlog 缩略图风格",
+      "summary": "清爽旅行 Vlog 缩略图系统：三块竖向照片面板、超大白色小写目的地字、小号斜体旅行注释、稀疏手绘标记和柔和手机摄影编辑感。"
+    },
+    "cozy-bedroom-doodle-companion-snapshot-style": {
+      "name": "温暖卧室涂鸦伙伴快照风格",
+      "summary": "低光居家抓拍风格：大型平面 2D 抱枕玩偶伙伴合成在前景下方，营造安静的深夜创作日记氛围、暖房间纹理、屏幕光和细小手写涂鸦。"
+    },
+    "electric-blue-silhouette-product-launch-style": {
+      "name": "电蓝剪影产品发布风格",
+      "summary": "克制高级的消费科技发布海报：黑色负空间、居中产品剪影、电蓝边缘光、发光水平平台、柔和倒影、被裁切的巨大蓝色背景字和干净白色发布文案。"
+    },
+    "folded-diamond-perspective-type-poster-style": {
+      "name": "折叠菱形透视字海报风格",
+      "summary": "大胆极简编辑海报风格：低机位英雄摄影嵌入菱形开口，搭配折叠的棕褐纸面或画布平面，以及印在下方面上的巨大白色透视字体。"
+    },
+    "gothic-cat-doodle-photo-collage-style": {
+      "name": "哥特猫涂鸦照片拼贴风格",
+      "summary": "玩趣照片插画拼贴风格：戏剧化真实建筑摄影、超大平面卡通生物覆盖层、圆润手绘标题字和松散马克笔涂鸦。"
+    },
+    "impact-burst-halftone-comic-poster-style": {
+      "name": "爆裂半调漫画海报风格",
+      "summary": "高声量复古漫画海报系统：厚黑墨线、高饱和平面色、超大冲击字体、夸张插画主体、斜向道具、对话爆炸框、烟雾团、半调网点和做旧丝网印刷颗粒。"
+    },
+    "k-pop-apocalypse-ransom-zine-style": {
+      "name": "K-Pop 末日勒索字 Zine 风格",
+      "summary": "极繁 K-Pop 时尚 zine 拼贴风格：中央人像剪纸、揉皱黑白纸纹、倾斜勒索字排版、嘈杂贴纸块、饱和青柠蓝红点缀和醒目的底部刊头带。"
+    },
+    "kinetic-geometric-doodle-cutouts": {
+      "name": "动感几何涂鸦剪纸风格",
+      "summary": "稀疏玩趣插画系统：角色或物体由超大平面几何色块、松散黑色涂鸦线、纸张颗粒和偏心漂浮动势组装在暖奶油背景上。"
+    },
+    "kinetic-luxury-street-fashion-cover-style": {
+      "name": "动感奢华街头时装封面风格",
+      "summary": "高级街头时尚杂志封面：侧脸行走摄影、横向运动模糊建筑、一个主导奢华单品、被风塑形的头发、克制都市中性色和超大宽字距衬线封面字。"
+    },
+    "luxury-perspective-checkerboard-editorial": {
+      "name": "奢华透视棋盘编辑海报",
+      "summary": "高定时尚编辑海报：低机位奢华摄影、锐利红白棋盘透视面、大量白空间、超大定制手写字体和克制祖母绿或蓝绿色点缀，具有国际高级广告气质。"
+    },
+    "metro-doodle-snapshot-diary-style": {
+      "name": "地铁涂鸦快照日记风格",
+      "summary": "手持城市交通照片拼贴风格：真实拥挤的地铁、公交、电车或车站快照，叠加马克笔式卡通涂鸦、夸张前景手势、白色手写日记和饱和漫画脸覆盖。"
+    },
+    "mono-noir-type-portrait-poster-style": {
+      "name": "黑白黑色电影字肖像海报风格",
+      "summary": "冷峻黑白编辑海报系统：近距离高反差摄影肖像搭配超大小写新怪诞字体；一个标题词反白在干净白色矩形标签里，其余文字压在炭黑背景上。"
+    },
+    "mountain-trail-monster-doodle-poster-style": {
+      "name": "山径怪物涂鸦海报风格",
+      "summary": "把真实户外徒步照片改造成玩趣冒险海报拼贴：平面手绘怪物伙伴、超大西班牙漫画字和松散速写标注。"
+    },
+    "multi-color-beverage-splash-ad-system-style": {
+      "name": "多彩饮料飞溅广告系统风格",
+      "summary": "可复用饮料上市广告系统：四套颜色变化模板，结合巨大白色 3D 字体、斜向饮品包装主角、冻结液体动势、密集发布广告文案和精修商业产品光。"
+    },
+    "naive-marker-psa-poster-style": {
+      "name": "稚拙马克笔公益海报风格",
+      "summary": "亲和手绘公共服务海报风格：粗不规则马克笔轮廓、超大蓝边对话框字体、简化卡通人物、扁平 civic 道具、粉彩纸背景、警示牌母题和刻意稚拙透视。"
+    },
+    "neon-doodle-gallery-snapshot-style": {
+      "name": "霓虹涂鸦展览快照风格",
+      "summary": "随手手机照片叠加混乱霓虹数字马克笔涂鸦：粉红和青色主体描边、黄色怪物尖刺、粗糙手写标题、星星、爪印、蜘蛛网角、涂写条、光环、植物和学生日记能量。"
+    },
+    "neon-kinetic-typographic-poster-style": {
+      "name": "霓虹动感排版海报风格",
+      "summary": "戏剧化户外编辑海报风格：低机位生活方式摄影、超大扭曲霓虹字体、胶片颗粒和高能青年文化广告设计。"
+    },
+    "neon-outdoor-diary-longform-collage-style": {
+      "name": "霓虹户外日记长图拼贴风格",
+      "summary": "移动端优先的高长户外日记海报系统：炭黑画布、纪实动作照片剪纸、酸绿动感标题、撕纸面板、手绘箭头、贴纸标签、编号章节和密集社交笔记节奏。"
+    },
+    "neon-plush-gadget-pop-3d-style": {
+      "name": "霓虹毛绒科技玩具 3D 风格",
+      "summary": "光泽玩具广告 3D 风格：酸橙棚拍背景、超大毛绒吉祥物、厚 chunky 科技道具、柔软织物表面、半透明塑料配件、棋盘卡、贴纸图标、热粉爆炸图形和明亮商业光。"
+    },
+    "olive-scribble-sports-poster-style": {
+      "name": "橄榄绿涂写运动海报风格",
+      "summary": "动感平面编辑插画风格：米白纸、大块橄榄绿海报块、超大动作人物、粗糙黑墨轮廓、红色马克笔运动弧线、黄绿色干刷痕迹、稀疏碎屑和手工丝网质感。"
+    },
+    "orange-brush-mascot-action-poster-style": {
+      "name": "橙色干刷吉祥物动作海报风格",
+      "summary": "稀疏橙白黑平面插画系统：白色吉祥物、超大道具、粗黑干刷线条、橙色腮红圆点和丝网印刷纸张颗粒。"
+    },
+    "photo-illustration-overlay-poster-style": {
+      "name": "照片插画覆盖海报风格",
+      "summary": "真实城市照片上合成一个超大高饱和平面 2D 卡通人物，并加入手绘星星、火花、箭头和漫画符号。"
+    },
+    "playful-mascot-doodle-snapshot-style": {
+      "name": "玩趣吉祥物涂鸦快照风格",
+      "summary": "把日常真实社交照片转成玩趣海报：叠加原创卡通吉祥物贴纸、手绘轮廓、丝带标题面板、闪光、螺旋和草图装饰标记。"
+    },
+    "plush-city-festival-mobile-poster-style": {
+      "name": "毛绒城市节日移动海报风格",
+      "summary": "明亮移动端活动海报风格：真实城市地标、柔软毛绒吉祥物、圆润应用卡片式框架、醒目白色节日字体、日期地点文字和友好的旅游宣传能量。"
+    },
+    "plush-comic-toy-product-poster-style": {
+      "name": "毛绒漫画玩具产品海报风格",
+      "summary": "高声量玩具产品海报：单个毛绒产品主角、复古奶油海报纸、青色圆形背景、超大倾斜漫画字、厚黑阴影、涂鸦注释、贴纸标签、闪电图形和密集活动微文案。"
+    },
+    "pop-bubble-letter-photo-poster-style": {
+      "name": "流行泡泡字照片海报风格",
+      "summary": "有冲击力的照片加插画海报：中心低机位时尚肖像被超大平面泡泡字形包围，搭配糖果色、厚黑轮廓、椭圆高光和清脆闪光标记。"
+    },
+    "quiet-luxury-furniture-nameplate-poster-style": {
+      "name": "静奢家具铭牌海报风格",
+      "summary": "高级家具编辑海报系统：暖米白棚拍场、深森林绿巨大展示字压在真实家具主角后方、稀疏目录微文案、细线规则、描边目录标签和深绿圆角底部信息条。"
+    },
+    "rough-animation-pet-sketch-storyboard-style": {
+      "name": "粗糙动画宠物草图分镜风格",
+      "summary": "适合宠物漫画场景的松散动画开发草图风格：暖米色纸、红棕构造线、刮擦感深酒红轮廓、半透明色洗、简单房间道具和夸张动物表情。"
+    },
+    "rough-ink-music-doodle-poster-style": {
+      "name": "粗墨音乐涂鸦海报风格",
+      "summary": "粗手绘墨线海报风格：巨大深绿黑刷字、浅腮红纸、热粉辅助字、稚拙吉祥物画、青绿与粉色平面填充、锐利黄色爆点、散落音乐符号涂鸦和扫描 risograph 质感。"
+    },
+    "soft-analog-future-editorial-poster-style": {
+      "name": "柔和模拟未来编辑海报风格",
+      "summary": "安静的模拟未来编辑海报：暖奶油纸、超大黑色新怪诞字体、严格网格规则、复古科技静物、浅蓝半透明界面面板、植物前景点缀和细小双语信息设计。"
+    },
+    "subway-doodle-photo-hybrid-style": {
+      "name": "地铁涂鸦照片混合风格",
+      "summary": "手机拍摄的城市交通海报风格：纪实地铁或街头交通摄影，叠加手绘卡通覆盖、涂鸦角色脸、夸张前景手势、手写笔记和社交媒体截图质感。"
+    },
+    "sunburst-fisheye-bubble-type-poster-style": {
+      "name": "日光爆裂鱼眼泡泡字海报风格",
+      "summary": "超低机位鱼眼夏日生活方式海报：近距离摄影主体、饱和钴蓝天空、巨大拱形柠檬黄泡泡字、暖橙字阴影、Y2K 配件和强烈模拟颗粒。"
+    },
+    "sunlit-architectural-fashion-editorial": {
+      "name": "阳光建筑时尚编辑风格",
+      "summary": "精致户外高定时尚摄影风格：低机位建筑框景、强烈地中海日光、暖石材中性色、拉长的模特剪影、克制奢华造型，以及来自电线、栏杆、阴影或立面几何的细图形线。"
+    },
+    "sunlit-supermodel-nameplate-editorial": {
+      "name": "阳光超模铭牌编辑风格",
+      "summary": "温暖模拟时尚编辑海报：户外超模摄影、丰沛前景纹理、小型材质铭牌细节和干净白色下三分之一标题说明排版。"
+    },
+    "sunny-3d-avatar-campaign-style": {
+      "name": "晴朗 3D 头像活动海报风格",
+      "summary": "明亮社交活动海报风格：光泽玩具感 3D 头像、饱和蓝天户外光、夸张广角透视、超大倾斜标题字和霓虹手绘运动标记。"
+    },
+    "surreal-fish-doodle-landmark-photo-collage-style": {
+      "name": "超现实鱼涂鸦地标照片拼贴风格",
+      "summary": "明亮旅行照片拼贴风格：把巨大的平面 2D 卡通旅人、幻想民俗鱼、黑色马克笔环线、泼溅标记和漫画星爆叠加到真实地标摄影上。"
+    },
+    "teenage-skate-scribble-screenprint-poster-style": {
+      "name": "青少年滑板涂写丝网海报风格",
+      "summary": "复古滑板 zine 海报风格：扭曲中央滑板者剪纸、奶油纸底、松散红色手写边框字、粗糙双色丝网纹理，以及受限的海军蓝灰绿赭色调色板。"
+    },
+    "tokyo-kawaii-travel-collage-poster-style": {
+      "name": "东京可爱旅行拼贴海报风格",
+      "summary": "极繁日本城市旅行拼贴风格：醒目目的地排版、可爱贴纸元素、漫画对话气泡、剪纸时尚摄影、半调城市背景和剪贴簿式编辑版面。"
+    },
+    "tri-color-hardcut-portrait-poster-style": {
+      "name": "三色硬切肖像海报风格",
+      "summary": "干净三色硬切肖像海报：平面青绿色背景场、珊瑚红主体面和近黑剪影或阴影，所有细节都被简化成大块硬边矢量感剪影。"
+    },
+    "turquoise-red-techno-manga-poster-style": {
+      "name": "青绿红色科技漫画海报风格",
+      "summary": "复古科技漫画海报系统：奶油纸底、巨大红色展示字、青绿色技术服装或硬件、密集机械线稿、标注面板、赛璐璐人物绘制和轻微褪色印刷纹理。"
+    },
+    "urban-transit-doodle-diary-style": {
+      "name": "城市交通涂鸦日记风格",
+      "summary": "粗粝城市快照视觉日记：真实公共空间摄影、粗手绘漫画覆盖、手写旅行笔记、饱和卡通脸和巨大的前景手势。"
+    },
+    "warm-fisheye-product-impact-ad-style": {
+      "name": "暖色鱼眼产品冲击广告风格",
+      "summary": "高冲击产品广告风格：超广角近摄摄影、由前景碎片形成的隧道、倾斜白色中文大字、暖琥珀棕对比、细小顶部导航标签、产品包装标注和压缩社媒横幅密度。"
+    },
+    "y2k-grunge-hiphop-cutout-poster-style": {
+      "name": "Y2K 粗粝嘻哈剪纸海报风格",
+      "summary": "Y2K 粗粝嘻哈杂志拼贴海报：超大照片剪纸、酸黄色复古排版、粗糙黑白墙面纹理、密集编辑页脚面板和复印机印刷噪点。"
+    },
+    "y2k-mirror-ui-scribble-collage-style": {
+      "name": "Y2K 镜面 UI 涂写拼贴风格",
+      "summary": "粗粝 Y2K 照片蒙太奇风格：广角闪光摄影、漂浮桌面界面碎片、粗电蓝马克笔描边、手绘涂鸦字和密集模拟噪声，形成混乱的个人屏幕拼贴。"
+    },
+    "yellow-black-manga-food-zine-ad-style": {
+      "name": "黄黑漫画食物 Zine 广告风格",
+      "summary": "密集日漫灵感食物与产品 zine 广告：黑色墨线、黄色广告块、奶油纸面、戏剧化裁切角色格、光泽插画产品主角、巨大扭曲展示字、小中文编辑文案和粗糙印刷纹理。"
+    }
+  }
+}

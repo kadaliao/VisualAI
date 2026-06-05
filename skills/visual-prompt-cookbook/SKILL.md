@@ -11,9 +11,9 @@ Use this skill to turn AI Visual Prompt Cookbook styles into usable image prompt
 
 1. If the user has not chosen a style, run:
    ```bash
-   uv run python skills/visual-prompt-cookbook/scripts/serve_dashboard.py
+   uv run python skills/visual-prompt-cookbook/scripts/serve_dashboard.py --language <conversation-language>
    ```
-   Open the printed local URL. Tell the user they can click a style in the dashboard or reply with an id, slug, or name.
+   Use the user's current conversation language, for example `--language zh-CN` for Chinese or `--language en` for English. Open the printed local URL. Tell the user they can click a style in the dashboard or reply with an id, slug, or name.
 2. Read `assets/cookbook/styles-index.json` to resolve the selected style. If needed, use:
    ```bash
    uv run python skills/visual-prompt-cookbook/scripts/render_prompt.py <style> --values-json /path/to/values.json

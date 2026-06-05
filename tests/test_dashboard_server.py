@@ -12,6 +12,13 @@ core = load_script_module("cookbook_core")
 
 
 class DashboardStateTests(unittest.TestCase):
+    def test_normalize_dashboard_language_accepts_user_language(self) -> None:
+        self.assertEqual(core.normalize_dashboard_language("zh-CN"), "zh-CN")
+        self.assertEqual(core.normalize_dashboard_language("zh"), "zh-CN")
+        self.assertEqual(core.normalize_dashboard_language("en-US"), "en")
+        self.assertEqual(core.normalize_dashboard_language(None), "auto")
+        self.assertEqual(core.normalize_dashboard_language("fr-FR"), "auto")
+
     def test_record_selection_writes_jsonl_event(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             state_dir = Path(tmp)
