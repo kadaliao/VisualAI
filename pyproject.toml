@@ -1,0 +1,9 @@
+[project]
+name = "visualai"
+version = "0.1.0"
+description = "Local Codex skill source for AI visual prompt workflows."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false
