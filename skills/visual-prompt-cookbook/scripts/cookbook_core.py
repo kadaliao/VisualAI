@@ -200,3 +200,15 @@ def record_dashboard_selection(state_dir: Path, payload: dict[str, Any]) -> dict
     with (state_dir / "events.jsonl").open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(event, ensure_ascii=False) + "\n")
     return event
+
+
+def install_skill_tree(source_root: Path, skills_root: Path) -> Path:
+    target = skills_root / "visual-prompt-cookbook"
+    if target.exists():
+        shutil.rmtree(target)
+
+    def ignore(_: str, names: list[str]) -> set[str]:
+        return {name for name in names if name in {".dashboard-state", "__pycache__"} or name.endswith(".pyc")}
+
+    shutil.copytree(source_root, target, ignore=ignore)
+    return target

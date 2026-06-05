@@ -1,0 +1,11 @@
+{
+  "style_count": 56,
+  "upstream": {
+    "upstream_url": "git@github.com:kadaliao/AI-Visual-Prompt-Cookbook.git",
+    "commit_sha": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f",
+    "synced_at": "2026-06-05T16:03:04+00:00",
+    "style_count": 56,
+    "schema_path": "schema/style-v2.1.schema.json",
+    "license": "MIT"
+  }
+}

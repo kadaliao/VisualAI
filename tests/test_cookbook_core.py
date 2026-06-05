@@ -71,11 +71,6 @@ class PromptRenderTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "No style matched"):
             core.find_style(index, "missing")
 
-
-if __name__ == "__main__":
-    unittest.main()
-
-
 def write_sample_upstream(root: Path) -> None:
     style_dir = root / "styles" / "mono-test-poster"
     style_dir.mkdir(parents=True)
@@ -113,3 +108,24 @@ class SyncIndexTests(unittest.TestCase):
             self.assertEqual(index["styles"][0]["id"], 1)
             self.assertEqual(index["styles"][0]["style_slug"], "mono-test-poster")
             self.assertEqual(index["styles"][0]["updated_from_commit"], "abc123")
+
+
+class InstallSkillTests(unittest.TestCase):
+    def test_install_skill_copies_tree_and_skips_dashboard_state(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "skill"
+            target_root = Path(tmp) / "skills"
+            (source / "scripts").mkdir(parents=True)
+            (source / "scripts" / "tool.py").write_text("print('ok')", encoding="utf-8")
+            (source / ".dashboard-state").mkdir()
+            (source / ".dashboard-state" / "events.jsonl").write_text("{}", encoding="utf-8")
+
+            installed = core.install_skill_tree(source, target_root)
+
+            self.assertEqual(installed, target_root / "visual-prompt-cookbook")
+            self.assertTrue((installed / "scripts" / "tool.py").exists())
+            self.assertFalse((installed / ".dashboard-state").exists())
+
+
+if __name__ == "__main__":
+    unittest.main()

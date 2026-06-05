@@ -1,0 +1,1551 @@
+{
+  "generated_at": "2026-06-05T16:03:04+00:00",
+  "upstream": {
+    "upstream_url": "git@github.com:kadaliao/AI-Visual-Prompt-Cookbook.git",
+    "commit_sha": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f",
+    "synced_at": "2026-06-05T16:03:04+00:00",
+    "style_count": 56,
+    "schema_path": "schema/style-v2.1.schema.json",
+    "license": "MIT"
+  },
+  "style_count": 56,
+  "styles": [
+    {
+      "id": 1,
+      "style_name": "Acid Lime 3D Streetwear Type Poster Style",
+      "style_slug": "acid-lime-3d-streetwear-type-poster-style",
+      "style_summary": "A glossy C4D streetwear campaign poster system built from pale studio space, oversized black block typography, acid-lime marker strokes, sticker badges, fashion-tool props, low wide-angle character staging, and clean synthetic product lighting.",
+      "preview_16x9": "styles/acid-lime-3d-streetwear-type-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/acid-lime-3d-streetwear-type-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 2,
+      "style_name": "Analog Sticker Diary Portrait Poster Style",
+      "style_slug": "analog-sticker-diary-portrait-poster-style",
+      "style_summary": "A nostalgic analog diary-collage portrait system with a large side-profile illustrated subject, cream graph-paper background, sticker-like personal objects, distressed orange hand lettering, and heavy scanned print texture.",
+      "preview_16x9": "styles/analog-sticker-diary-portrait-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/analog-sticker-diary-portrait-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "collage",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 3,
+      "style_name": "Backseat Transit Doodle Letter Poster Style",
+      "style_slug": "backseat-transit-doodle-letter-poster-style",
+      "style_summary": "A realistic passenger-seat transport photo transformed into a high-energy travel poster with a central rear-view subject, electric yellow silhouette halo, oversized yellow-orange hand-drawn letters, comic rays, purple music marks, sticker icons, and cyan-white cloud swooshes.",
+      "preview_16x9": "styles/backseat-transit-doodle-letter-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/backseat-transit-doodle-letter-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "collage",
+        "photo",
+        "typography",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 4,
+      "style_name": "Black Cutout Food Card Ad",
+      "style_slug": "black-cutout-food-card-ad-style",
+      "style_summary": "A black-background food promotion style built around one irregular cream paper card, oversized hand-brushed Chinese lettering, clipped food photography, small price medallions, warm red/yellow accents, and a handmade street-snack print texture.",
+      "preview_16x9": "styles/black-cutout-food-card-ad-style/preview-16x9.jpg",
+      "preview_9x16": "styles/black-cutout-food-card-ad-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "product",
+        "photo",
+        "typography",
+        "food"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 5,
+      "style_name": "Blue Bubble Fisheye Action Poster Style",
+      "style_slug": "blue-bubble-fisheye-action-poster-style",
+      "style_summary": "A crisp white youth-culture action poster style with a rectangular fisheye photograph, oversized rounded royal-blue display typography, frame-breaking foreground scale, small blue editorial captions, and one red hand-drawn annotation circle.",
+      "preview_16x9": "styles/blue-bubble-fisheye-action-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/blue-bubble-fisheye-action-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 6,
+      "style_name": "Blue Chinese Perspective Type Canyon Style",
+      "style_slug": "blue-chinese-perspective-type-canyon-style",
+      "style_summary": "A Chinese typographic poster system built from an extreme one-point perspective corridor: a saturated blue central trapezoid plane carries stacked oversized white Chinese display type, while black side walls are packed with warped white and pale gray Chinese support copy.",
+      "preview_16x9": "styles/blue-chinese-perspective-type-canyon-style/preview-16x9.jpg",
+      "preview_9x16": "styles/blue-chinese-perspective-type-canyon-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 7,
+      "style_name": "Blue HUD Macro Creator Tech Poster",
+      "style_slug": "blue-hud-macro-product-poster",
+      "style_summary": "A high-density blue creator-tech advertisement style built around macro 3D hardware heroes, oversized ribbed gloves, electric-blue HUD panels, massive condensed typography, glossy glass cards, and one warm gold performance badge.",
+      "preview_16x9": "styles/blue-hud-macro-product-poster/preview-16x9.jpg",
+      "preview_9x16": "styles/blue-hud-macro-product-poster/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO",
+        "NEGATIVE_PROMPT"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 8,
+      "style_name": "Blue Lime Kinetic Comic Type Poster Style",
+      "style_slug": "blue-lime-kinetic-comic-type-poster-style",
+      "style_summary": "A loud flat comic-poster system built from electric-blue grid paper, oversized neon-lime speech-panel geometry, heavy black block typography, sharp yellow back plates, radial action marks, and gritty print texture. The style feels like a kinetic street flyer where the headline is the main subject.",
+      "preview_16x9": "styles/blue-lime-kinetic-comic-type-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/blue-lime-kinetic-comic-type-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 9,
+      "style_name": "Bold Anime Reaction Thumbnail Style",
+      "style_slug": "bold-anime-reaction-thumbnail-style",
+      "style_summary": "A high-impact anime web-thumbnail system with oversized reaction characters, bold yellow headline typography, hard black shadows, split-screen framing, a smaller glowing action insert, and clean cel-shaded illustration.",
+      "preview_16x9": "styles/bold-anime-reaction-thumbnail-style/preview-16x9.jpg",
+      "preview_9x16": "styles/bold-anime-reaction-thumbnail-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO",
+        "NEGATIVE_PROMPT"
+      ],
+      "tags": [
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 10,
+      "style_name": "Bold Block Mascot Poster Style",
+      "style_slug": "bold-block-mascot-poster-style",
+      "style_summary": "A dense flat poster system built from giant black display type, chunky white mascot figures, thick cartoon outlines, tilted cyan or mint color panels, compact badges, tiny red accents, and a clean off-white print surface.",
+      "preview_16x9": "styles/bold-block-mascot-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/bold-block-mascot-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 11,
+      "style_name": "Chromatic Fisheye Orbit Pop Poster Style",
+      "style_slug": "chromatic-fisheye-orbit-pop-poster-style",
+      "style_summary": "A high-key pop poster system built from extreme fisheye photography, a convex glass-dome center, oversized orbiting typography, hot red-magenta-orange letter fills, aqua chromatic light arcs, and light analog print texture.",
+      "preview_16x9": "styles/chromatic-fisheye-orbit-pop-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/chromatic-fisheye-orbit-pop-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 12,
+      "style_name": "Clean Triptych Travel Vlog Thumbnail Style",
+      "style_slug": "clean-triptych-travel-vlog-thumbnail-style",
+      "style_summary": "A clean travel-vlog thumbnail system built from three vertical photographic panels, oversized lowercase white destination type, small italic travel annotations, sparse hand-drawn marks, and a soft phone-camera editorial finish.",
+      "preview_16x9": "styles/clean-triptych-travel-vlog-thumbnail-style/preview-16x9.jpg",
+      "preview_9x16": "styles/clean-triptych-travel-vlog-thumbnail-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "fashion",
+        "photo",
+        "typography",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 13,
+      "style_name": "Cozy Bedroom Doodle Companion Snapshot Style",
+      "style_slug": "cozy-bedroom-doodle-companion-snapshot-style",
+      "style_summary": "A candid low-light home photo style with a large flat 2D cushion-doll companion composited into the lower foreground, creating a quiet late-night creative diary mood with warm room texture, screen glow, and tiny handwritten doodle marks.",
+      "preview_16x9": "styles/cozy-bedroom-doodle-companion-snapshot-style/preview-16x9.jpg",
+      "preview_9x16": "styles/cozy-bedroom-doodle-companion-snapshot-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "DOODLE_COMPANION",
+        "DOODLE_SCALE",
+        "CHARACTER_DIFFERENCE_RULE",
+        "LIGHT_SOURCE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "collage",
+        "photo"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 14,
+      "style_name": "Electric Blue Silhouette Product Launch Style",
+      "style_slug": "electric-blue-silhouette-product-launch-style",
+      "style_summary": "A sparse premium consumer-tech launch poster style built from black negative space, a centered product silhouette, electric-blue rim lighting, a glowing horizontal platform, soft reflection, giant cropped blue background typography, and clean white announcement copy.",
+      "preview_16x9": "styles/electric-blue-silhouette-product-launch-style/preview-16x9.jpg",
+      "preview_9x16": "styles/electric-blue-silhouette-product-launch-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 15,
+      "style_name": "Folded Diamond Perspective Type Poster Style",
+      "style_slug": "folded-diamond-perspective-type-poster-style",
+      "style_summary": "A bold minimalist editorial poster style using low-angle hero photography inside a diamond aperture, folded tan paper or canvas planes, and oversized white perspective typography printed across the lower surface.",
+      "preview_16x9": "styles/folded-diamond-perspective-type-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/folded-diamond-perspective-type-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 16,
+      "style_name": "Gothic Cat Doodle Photo Collage Style",
+      "style_slug": "gothic-cat-doodle-photo-collage-style",
+      "style_summary": "A playful photo-illustration collage style combining dramatic real architectural photography with oversized flat cartoon creature overlays, bubbly hand-drawn headline lettering, and loose marker doodles.",
+      "preview_16x9": "styles/gothic-cat-doodle-photo-collage-style/preview-16x9.jpg",
+      "preview_9x16": "styles/gothic-cat-doodle-photo-collage-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "product",
+        "collage",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 17,
+      "style_name": "Impact Burst Halftone Comic Poster Style",
+      "style_slug": "impact-burst-halftone-comic-poster-style",
+      "style_summary": "A loud retro comic poster system built from thick black ink, flat high-saturation colors, oversized impact typography, exaggerated illustrated subjects, diagonal props, speech bursts, smoke puffs, halftone dots, and distressed screen-print grain.",
+      "preview_16x9": "styles/impact-burst-halftone-comic-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/impact-burst-halftone-comic-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 18,
+      "style_name": "K-Pop Apocalypse Ransom Zine Style",
+      "style_slug": "k-pop-apocalypse-ransom-zine-style",
+      "style_summary": "A maximalist K-pop fashion zine collage style built from a central portrait cutout, crumpled monochrome paper texture, skewed ransom-note typography, loud sticker blocks, saturated lime/blue/red accents, and a bold bottom masthead band.",
+      "preview_16x9": "styles/k-pop-apocalypse-ransom-zine-style/preview-16x9.jpg",
+      "preview_9x16": "styles/k-pop-apocalypse-ransom-zine-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "fashion",
+        "product",
+        "collage",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 19,
+      "style_name": "Kinetic Geometric Doodle Cutouts",
+      "style_slug": "kinetic-geometric-doodle-cutouts",
+      "style_summary": "A sparse, playful illustration system where a character or object is assembled from oversized flat geometric color pieces, loose black doodle lines, paper grain, and buoyant off-center motion on a warm cream background.",
+      "preview_16x9": "styles/kinetic-geometric-doodle-cutouts/preview-16x9.jpg",
+      "preview_9x16": "styles/kinetic-geometric-doodle-cutouts/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "collage"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 20,
+      "style_name": "Kinetic Luxury Street Fashion Cover Style",
+      "style_slug": "kinetic-luxury-street-fashion-cover-style",
+      "style_summary": "A premium street-fashion magazine cover style built from side-profile walking photography, horizontal motion-blurred architecture, one dominant luxury garment, wind-shaped hair, restrained urban neutrals, and oversized wide-spaced serif cover typography. It preserves the kinetic editorial grammar of the reference while changing the model identity, wardrobe, prop, headline, and story details.",
+      "preview_16x9": "styles/kinetic-luxury-street-fashion-cover-style/preview-16x9.jpg",
+      "preview_9x16": "styles/kinetic-luxury-street-fashion-cover-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "fashion",
+        "product",
+        "collage",
+        "photo",
+        "typography",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 21,
+      "style_name": "Luxury Perspective Checkerboard Editorial",
+      "style_slug": "luxury-perspective-checkerboard-editorial",
+      "style_summary": "A high-fashion editorial poster style with low-angle luxury photography, sharp red-and-white checkerboard perspective planes, generous white space, oversized custom script typography, and restrained emerald or teal accents. It evokes international luxury maison advertising without copying any real brand mark, campaign, model, product, or exact layout.",
+      "preview_16x9": "styles/luxury-perspective-checkerboard-editorial/preview-16x9.jpg",
+      "preview_9x16": "styles/luxury-perspective-checkerboard-editorial/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "product",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 22,
+      "style_name": "Metro Doodle Snapshot Diary",
+      "style_slug": "metro-doodle-snapshot-diary-style",
+      "style_summary": "A handheld urban transit photo-collage style combining realistic crowded metro, bus, tram, or station snapshots with expressive marker-like cartoon doodles, oversized foreground gestures, white handwritten diary notes, and saturated comic face overlays.",
+      "preview_16x9": "styles/metro-doodle-snapshot-diary-style/preview-16x9.jpg",
+      "preview_9x16": "styles/metro-doodle-snapshot-diary-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "collage",
+        "photo",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 23,
+      "style_name": "Mono Noir Type Portrait Poster Style",
+      "style_slug": "mono-noir-type-portrait-poster-style",
+      "style_summary": "A stark black-and-white editorial poster system pairing a close, high-contrast photographic portrait with oversized lowercase neo-grotesk typography. One headline word is reversed into a clean white rectangular label while the remaining words sit as heavy white type over a charcoal background.",
+      "preview_16x9": "styles/mono-noir-type-portrait-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/mono-noir-type-portrait-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "product",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 24,
+      "style_name": "Mountain Trail Monster Doodle Poster Style",
+      "style_slug": "mountain-trail-monster-doodle-poster-style",
+      "style_summary": "A candid outdoor hiking photograph remixed with a flat hand-drawn monster companion, oversized Spanish comic lettering, and loose sketch annotations, creating a playful adventure-poster collage.",
+      "preview_16x9": "styles/mountain-trail-monster-doodle-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/mountain-trail-monster-doodle-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "collage",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 25,
+      "style_name": "Multi-Color Beverage Splash Ad System Style",
+      "style_slug": "multi-color-beverage-splash-ad-system-style",
+      "style_summary": "A reusable beverage launch advertising system with four color-varied templates, built from giant white 3D typography, a diagonal hero drink pack, frozen liquid motion, dense launch-ad copy, and polished commercial product lighting.",
+      "preview_16x9": "styles/multi-color-beverage-splash-ad-system-style/preview-16x9.jpg",
+      "preview_9x16": "styles/multi-color-beverage-splash-ad-system-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO",
+        "PRODUCT_CATEGORY",
+        "DELIVERY_FORMAT",
+        "PRIMARY_COLOR",
+        "SECONDARY_COLOR"
+      ],
+      "tags": [
+        "product",
+        "typography",
+        "food"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 26,
+      "style_name": "Naive Marker PSA Poster Style",
+      "style_slug": "naive-marker-psa-poster-style",
+      "style_summary": "A friendly hand-drawn public-service poster style built from chunky irregular marker outlines, oversized blue-bordered speech-panel typography, simplified cartoon people, flattened civic props, pastel paper backgrounds, warning-sign motifs, and intentionally naive perspective.",
+      "preview_16x9": "styles/naive-marker-psa-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/naive-marker-psa-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 27,
+      "style_name": "Neon Doodle Gallery Snapshot",
+      "style_slug": "neon-doodle-gallery-snapshot-style",
+      "style_summary": "A candid phone-photo style layered with chaotic neon digital marker doodles: hot-pink and cyan subject outlines, yellow monster spikes, rough handwritten captions, stars, paw prints, spiderweb corners, scribble bars, halos, plants, and student diary energy.",
+      "preview_16x9": "styles/neon-doodle-gallery-snapshot-style/preview-16x9.jpg",
+      "preview_9x16": "styles/neon-doodle-gallery-snapshot-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "collage",
+        "photo"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 28,
+      "style_name": "Neon Kinetic Typographic Poster",
+      "style_slug": "neon-kinetic-typographic-poster-style",
+      "style_summary": "A dramatic outdoor editorial poster style combining low-angle lifestyle photography, oversized warped neon typography, film grain, and high-energy youth-culture campaign design.",
+      "preview_16x9": "styles/neon-kinetic-typographic-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/neon-kinetic-typographic-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 29,
+      "style_name": "Neon Outdoor Diary Longform Collage Style",
+      "style_slug": "neon-outdoor-diary-longform-collage-style",
+      "style_summary": "A tall mobile-first outdoor diary poster system with a charcoal black canvas, documentary action-photo cutouts, acid green kinetic headlines, ripped paper panels, hand-drawn arrows, sticker labels, numbered sections, and dense social-note pacing.",
+      "preview_16x9": "styles/neon-outdoor-diary-longform-collage-style/preview-16x9.jpg",
+      "preview_9x16": "styles/neon-outdoor-diary-longform-collage-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "collage",
+        "photo"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 30,
+      "style_name": "Neon Plush Gadget Pop 3D Style",
+      "style_slug": "neon-plush-gadget-pop-3d-style",
+      "style_summary": "A glossy toy-advertising 3D style built from acid lime studio backdrops, oversized fuzzy plush mascots, chunky tech props, soft textile surfaces, translucent plastic accessories, checkerboard cards, sticker-like icons, hot-pink burst graphics, and bright commercial lighting.",
+      "preview_16x9": "styles/neon-plush-gadget-pop-3d-style/preview-16x9.jpg",
+      "preview_9x16": "styles/neon-plush-gadget-pop-3d-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "product"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 31,
+      "style_name": "Olive Scribble Sports Poster Style",
+      "style_slug": "olive-scribble-sports-poster-style",
+      "style_summary": "A kinetic flat editorial illustration style built from off-white paper, large olive-green poster blocks, oversized action figures, rough black ink contours, red marker motion arcs, yellow-green dry-brush swaths, sparse debris, and handmade screenprint texture.",
+      "preview_16x9": "styles/olive-scribble-sports-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/olive-scribble-sports-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO",
+        "NEGATIVE_PROMPT"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "product"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 32,
+      "style_name": "Orange Brush Mascot Action Poster Style",
+      "style_slug": "orange-brush-mascot-action-poster-style",
+      "style_summary": "A sparse orange-white-black flat illustration system with a white mascot figure, oversized prop, rough black dry-brush linework, orange cheek circles, and screen-printed paper grain.",
+      "preview_16x9": "styles/orange-brush-mascot-action-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/orange-brush-mascot-action-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 33,
+      "style_name": "Photo Illustration Overlay Poster",
+      "style_slug": "photo-illustration-overlay-poster-style",
+      "style_summary": "A realistic city photograph with an oversized, high-saturation, flat 2D cartoon figure composited on top, plus hand-drawn stars, sparks, arrows, and comic marks.",
+      "preview_16x9": "styles/photo-illustration-overlay-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/photo-illustration-overlay-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "photo",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 34,
+      "style_name": "Playful Mascot Doodle Snapshot Style",
+      "style_slug": "playful-mascot-doodle-snapshot-style",
+      "style_summary": "A casual real-life social photo transformed into a playful poster by layering original cartoon mascot stickers, hand-drawn outlines, ribbon headline panels, sparkles, spirals, and sketchy decorative marks over the photographic scene.",
+      "preview_16x9": "styles/playful-mascot-doodle-snapshot-style/preview-16x9.jpg",
+      "preview_9x16": "styles/playful-mascot-doodle-snapshot-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "collage",
+        "photo"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 35,
+      "style_name": "Plush City Festival Mobile Poster",
+      "style_slug": "plush-city-festival-mobile-poster-style",
+      "style_summary": "A bright mobile event poster style combining real city landmarks, soft fuzzy mascot characters, rounded app-card UI framing, bold white festival typography, date/location text, and friendly tourism-campaign energy.",
+      "preview_16x9": "styles/plush-city-festival-mobile-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/plush-city-festival-mobile-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "typography",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 36,
+      "style_name": "Plush Comic Toy Product Poster Style",
+      "style_slug": "plush-comic-toy-product-poster-style",
+      "style_summary": "A loud toy-product poster style built around one fuzzy plush product hero, retro cream poster paper, a cyan circular backdrop, oversized slanted comic typography, thick black shadows, doodle annotations, sticker labels, lightning graphics, and dense campaign microcopy.",
+      "preview_16x9": "styles/plush-comic-toy-product-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/plush-comic-toy-product-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO",
+        "PRODUCT_TEXTURE",
+        "TYPOGRAPHY_LANGUAGE"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "collage",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 37,
+      "style_name": "Pop Bubble Letter Photo Poster Style",
+      "style_slug": "pop-bubble-letter-photo-poster-style",
+      "style_summary": "A punchy photo-and-illustration poster style built around a central low-angle fashion portrait framed by oversized flat bubble-letter shapes, saturated candy colors, thick black outlines, oval highlights, and crisp sparkle marks.",
+      "preview_16x9": "styles/pop-bubble-letter-photo-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/pop-bubble-letter-photo-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 38,
+      "style_name": "Quiet Luxury Furniture Nameplate Poster Style",
+      "style_slug": "quiet-luxury-furniture-nameplate-poster-style",
+      "style_summary": "A premium furniture editorial poster system with a warm off-white studio field, oversized deep forest-green display typography behind one realistic hero furniture object, sparse catalog microcopy, thin rules, outlined catalog chips, and a dark green rounded bottom information bar.",
+      "preview_16x9": "styles/quiet-luxury-furniture-nameplate-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/quiet-luxury-furniture-nameplate-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 39,
+      "style_name": "Rough Animation Pet Sketch Storyboard Style",
+      "style_slug": "rough-animation-pet-sketch-storyboard-style",
+      "style_summary": "A loose animation development sketch style for comic pet scenes, built from warm beige paper, red-brown construction lines, scratchy dark burgundy contours, semi-transparent color wash, simple room props, and exaggerated animal expressions.",
+      "preview_16x9": "styles/rough-animation-pet-sketch-storyboard-style/preview-16x9.jpg",
+      "preview_9x16": "styles/rough-animation-pet-sketch-storyboard-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "visual"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 40,
+      "style_name": "Rough Ink Music Doodle Poster Style",
+      "style_slug": "rough-ink-music-doodle-poster-style",
+      "style_summary": "A rough hand-inked poster style built from oversized dark green-black brush lettering, pale blush paper, hot pink secondary type, naive mascot drawings, teal and pink flat fills, sharp yellow burst marks, scattered music-note doodles, and scanned risograph-like print texture.",
+      "preview_16x9": "styles/rough-ink-music-doodle-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/rough-ink-music-doodle-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "collage",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 41,
+      "style_name": "Soft Analog Future Editorial Poster",
+      "style_slug": "soft-analog-future-editorial-poster-style",
+      "style_summary": "A quiet analog-future editorial poster style using warm cream paper, oversized black neo-grotesk typography, strict grid rules, retro technology still life, pale-blue translucent interface panels, botanical foreground accents, and tiny bilingual information design.",
+      "preview_16x9": "styles/soft-analog-future-editorial-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/soft-analog-future-editorial-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 42,
+      "style_name": "Subway Doodle Photo Hybrid",
+      "style_slug": "subway-doodle-photo-hybrid-style",
+      "style_summary": "A phone-shot urban transit poster style combining documentary subway or street transport photography with expressive hand-drawn cartoon overlays, doodled character faces, oversized foreground gestures, handwritten notes, and social media screenshot texture.",
+      "preview_16x9": "styles/subway-doodle-photo-hybrid-style/preview-16x9.jpg",
+      "preview_9x16": "styles/subway-doodle-photo-hybrid-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "collage",
+        "photo",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 43,
+      "style_name": "Sunburst Fisheye Bubble Type Poster Style",
+      "style_slug": "sunburst-fisheye-bubble-type-poster-style",
+      "style_summary": "An ultra-low-angle fisheye summer lifestyle poster style with a close photographic subject, saturated cobalt sky, huge arched lemon-yellow bubble typography, warm orange type shading, Y2K accessories, and heavy analog grain.",
+      "preview_16x9": "styles/sunburst-fisheye-bubble-type-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/sunburst-fisheye-bubble-type-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT_IDENTITY",
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO",
+        "LENS_STYLE",
+        "TEXTURE_LEVEL"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 44,
+      "style_name": "Sunlit Architectural Fashion Editorial",
+      "style_slug": "sunlit-architectural-fashion-editorial",
+      "style_summary": "A polished outdoor high-fashion editorial photography style built from low-angle architectural framing, hard Mediterranean daylight, warm stone neutrals, elongated model silhouettes, restrained luxury styling, and fine graphic lines from wires, railings, shadows, or facade geometry. It recreates the premium fashion-campaign feeling without copying the original models, wardrobe, plaza, prop placement, or poses.",
+      "preview_16x9": "styles/sunlit-architectural-fashion-editorial/preview-16x9.jpg",
+      "preview_9x16": "styles/sunlit-architectural-fashion-editorial/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "fashion",
+        "product",
+        "photo"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 45,
+      "style_name": "Sunlit Supermodel Nameplate Editorial",
+      "style_slug": "sunlit-supermodel-nameplate-editorial",
+      "style_summary": "A warm analog fashion editorial poster style combining an outdoor supermodel photograph, lush foreground texture, a small material nameplate detail, and clean white lower-third title/caption typography.",
+      "preview_16x9": "styles/sunlit-supermodel-nameplate-editorial/preview-16x9.jpg",
+      "preview_9x16": "styles/sunlit-supermodel-nameplate-editorial/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 46,
+      "style_name": "Sunny 3D Avatar Campaign Style",
+      "style_slug": "sunny-3d-avatar-campaign-style",
+      "style_summary": "A bright social campaign poster style built from glossy toy-like 3D avatars, saturated blue-sky outdoor lighting, exaggerated wide-angle perspective, oversized slanted headline typography, and neon hand-drawn motion marks.",
+      "preview_16x9": "styles/sunny-3d-avatar-campaign-style/preview-16x9.jpg",
+      "preview_9x16": "styles/sunny-3d-avatar-campaign-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 47,
+      "style_name": "Surreal Fish Doodle Landmark Photo Collage Style",
+      "style_slug": "surreal-fish-doodle-landmark-photo-collage-style",
+      "style_summary": "A bright travel-photo collage style that overlays giant flat 2D cartoon travelers, fantastical folk-art fish, black marker loops, splash marks, and comic starbursts onto realistic landmark photography.",
+      "preview_16x9": "styles/surreal-fish-doodle-landmark-photo-collage-style/preview-16x9.jpg",
+      "preview_9x16": "styles/surreal-fish-doodle-landmark-photo-collage-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "collage",
+        "photo",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 48,
+      "style_name": "Teenage Skate Scribble Screenprint Poster Style",
+      "style_slug": "teenage-skate-scribble-screenprint-poster-style",
+      "style_summary": "A retro skate zine poster style with a distorted central skateboarder cutout, cream paper field, loose red hand-lettered border typography, rough duotone screen-print texture, and a limited navy-gray-green-ochre palette.",
+      "preview_16x9": "styles/teenage-skate-scribble-screenprint-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/teenage-skate-scribble-screenprint-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "collage",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 49,
+      "style_name": "Tokyo Kawaii Travel Collage Poster",
+      "style_slug": "tokyo-kawaii-travel-collage-poster-style",
+      "style_summary": "A maximalist Japanese city-travel collage style with bold destination typography, cute sticker elements, manga speech bubbles, cutout fashion photography, halftone urban backgrounds, and scrapbook editorial layout.",
+      "preview_16x9": "styles/tokyo-kawaii-travel-collage-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/tokyo-kawaii-travel-collage-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "collage",
+        "photo",
+        "typography",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 50,
+      "style_name": "Tri Color Hardcut Portrait Poster Style",
+      "style_slug": "tri-color-hardcut-portrait-poster-style",
+      "style_summary": "A clean three-color hardcut portrait poster style using flat teal background fields, coral-red subject planes, and near-black silhouettes or shadows, with all detail reduced into large hard-edged vector-like cutouts.",
+      "preview_16x9": "styles/tri-color-hardcut-portrait-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/tri-color-hardcut-portrait-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 51,
+      "style_name": "Turquoise Red Techno Manga Poster Style",
+      "style_slug": "turquoise-red-techno-manga-poster-style",
+      "style_summary": "A retro techno-manga poster system with a cream paper ground, huge red display lettering, turquoise technical clothing or hardware, dense mechanical linework, annotation panels, cel-shaded figure drawing, and slightly faded printed texture.",
+      "preview_16x9": "styles/turquoise-red-techno-manga-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/turquoise-red-techno-manga-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "product",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 52,
+      "style_name": "Urban Transit Doodle Diary Style",
+      "style_slug": "urban-transit-doodle-diary-style",
+      "style_summary": "A raw urban snapshot treated like a personal visual diary, combining real public-space photography with bold hand-drawn comic overlays, handwritten travel notes, saturated cartoon faces, and a large foreground gesture.",
+      "preview_16x9": "styles/urban-transit-doodle-diary-style/preview-16x9.jpg",
+      "preview_9x16": "styles/urban-transit-doodle-diary-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "collage",
+        "photo",
+        "travel"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 53,
+      "style_name": "Warm Fisheye Product Impact Ad Style",
+      "style_slug": "warm-fisheye-product-impact-ad-style",
+      "style_summary": "A high-impact product advertising style built from ultra-wide close-up photography, a tunnel of textured foreground pieces, oversized angled white Chinese display type, warm amber-brown contrast, tiny top navigation labels, product-pack callouts, and compressed social-banner density. It feels like a loud commercial thumbnail shot from inside a pile of snack-like objects, with the product and subject rushing toward the viewer.",
+      "preview_16x9": "styles/warm-fisheye-product-impact-ad-style/preview-16x9.jpg",
+      "preview_9x16": "styles/warm-fisheye-product-impact-ad-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO",
+        "NEGATIVE_PROMPT"
+      ],
+      "tags": [
+        "product",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 54,
+      "style_name": "Y2K Grunge Hip-Hop Cutout Poster Style",
+      "style_slug": "y2k-grunge-hiphop-cutout-poster-style",
+      "style_summary": "A Y2K grunge hip-hop magazine collage poster style built from oversized photo cutouts, acid yellow retro typography, rough black-and-white wall textures, dense editorial footer panels, and photocopied print noise.",
+      "preview_16x9": "styles/y2k-grunge-hiphop-cutout-poster-style/preview-16x9.jpg",
+      "preview_9x16": "styles/y2k-grunge-hiphop-cutout-poster-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "poster",
+        "fashion",
+        "collage",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 55,
+      "style_name": "Y2K Mirror UI Scribble Collage Style",
+      "style_slug": "y2k-mirror-ui-scribble-collage-style",
+      "style_summary": "A gritty Y2K photomontage style that combines wide-angle flash photography, floating desktop-like interface fragments, thick electric-blue marker outlines, hand-drawn graffiti lettering, and dense analog noise into a chaotic personal-screen collage.",
+      "preview_16x9": "styles/y2k-mirror-ui-scribble-collage-style/preview-16x9.jpg",
+      "preview_9x16": "styles/y2k-mirror-ui-scribble-collage-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "collage",
+        "photo",
+        "typography"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    },
+    {
+      "id": 56,
+      "style_name": "Yellow Black Manga Food Zine Ad Style",
+      "style_slug": "yellow-black-manga-food-zine-ad-style",
+      "style_summary": "A dense Japanese-manga-inspired food and product zine advertisement style with black ink linework, yellow advertising blocks, cream paper fields, dramatic cropped character panels, glossy illustrated hero objects, giant warped display typography, small Chinese editorial copy, and rough print texture.",
+      "preview_16x9": "styles/yellow-black-manga-food-zine-ad-style/preview-16x9.jpg",
+      "preview_9x16": "styles/yellow-black-manga-food-zine-ad-style/preview-9x16.jpg",
+      "environment_variables": [
+        "SUBJECT",
+        "SUBJECT_ACTION",
+        "PRODUCT_OR_PROP",
+        "LOCATION",
+        "BACKGROUND_ELEMENTS",
+        "MAIN_TEXT",
+        "SECONDARY_TEXT",
+        "ACCENT_SYMBOL",
+        "WARDROBE_STYLE",
+        "STYLE_FIDELITY_ANCHORS",
+        "SOURCE_CONTENT_TO_AVOID",
+        "ASPECT_RATIO"
+      ],
+      "tags": [
+        "fashion",
+        "product",
+        "collage",
+        "typography",
+        "food"
+      ],
+      "updated_from_commit": "5d3f8b6c03e200d7028cbc09f60169a4c1b4e02f"
+    }
+  ]
+}

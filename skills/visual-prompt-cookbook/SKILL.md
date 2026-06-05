@@ -32,3 +32,14 @@ Use this skill to turn AI Visual Prompt Cookbook styles into usable image prompt
 - Preserve the style's `style_fidelity_anchors`, `source_content_to_avoid`, and `negative_prompt`.
 
 For longer guidance, read `references/usage-workflow.md`.
+
+## Upstream And Updates
+
+The bundled styles come from `git@github.com:kadaliao/AI-Visual-Prompt-Cookbook.git`. The synced assets keep the upstream `LICENSE`, schema, commit SHA, and sync time in `assets/cookbook/`.
+
+To refresh styles from upstream in the source repo, run:
+
+```bash
+uv run python skills/visual-prompt-cookbook/scripts/sync_cookbook.py
+uv run python skills/visual-prompt-cookbook/scripts/install_skill.py
+```
