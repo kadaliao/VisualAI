@@ -164,3 +164,22 @@ def sync_cookbook_assets(
     write_json(output_root / "styles-index.json", build_styles_index(output_root, upstream))
     write_json(output_root / "manifest.json", {"style_count": style_count, "upstream": upstream})
     return upstream
+
+
+def find_style(index: dict[str, Any], query: str) -> dict[str, Any]:
+    normalized = query.strip().lower()
+    for entry in index.get("styles", []):
+        if str(entry.get("id")) == normalized:
+            return entry
+    matches = [
+        entry
+        for entry in index.get("styles", [])
+        if normalized in entry.get("style_slug", "").lower()
+        or normalized in entry.get("style_name", "").lower()
+    ]
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        names = ", ".join(f"{entry['id']}:{entry['style_slug']}" for entry in matches[:8])
+        raise ValueError(f"Multiple styles matched {query!r}: {names}")
+    raise ValueError(f"No style matched {query!r}")

@@ -1,0 +1,8 @@
+interface:
+  display_name: "Visual Prompt Cookbook"
+  short_description: "Browse visual styles and render polished image prompts."
+  brand_color: "#111827"
+  default_prompt: "Use $visual-prompt-cookbook to help me choose a refined visual style and draft a final image prompt."
+
+policy:
+  allow_implicit_invocation: true

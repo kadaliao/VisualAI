@@ -58,6 +58,19 @@ class PromptRenderTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Missing values: MAIN_TEXT"):
             core.render_prompt(sample_style(), {"SUBJECT": "a chef", "ASPECT_RATIO": "9:16"})
 
+    def test_find_style_by_id_or_slug(self) -> None:
+        index = {
+            "styles": [
+                {"id": 1, "style_slug": "mono-test-poster", "style_name": "Mono Test Poster"},
+                {"id": 2, "style_slug": "bright-ad", "style_name": "Bright Ad"},
+            ]
+        }
+        self.assertEqual(core.find_style(index, "1")["style_slug"], "mono-test-poster")
+        self.assertEqual(core.find_style(index, "bright-ad")["id"], 2)
+        self.assertEqual(core.find_style(index, "bright")["id"], 2)
+        with self.assertRaisesRegex(ValueError, "No style matched"):
+            core.find_style(index, "missing")
+
 
 if __name__ == "__main__":
     unittest.main()
