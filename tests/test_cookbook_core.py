@@ -61,3 +61,42 @@ class PromptRenderTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def write_sample_upstream(root: Path) -> None:
+    style_dir = root / "styles" / "mono-test-poster"
+    style_dir.mkdir(parents=True)
+    (style_dir / "style.json").write_text(json.dumps(sample_style()), encoding="utf-8")
+    (style_dir / "preview-16x9.jpg").write_bytes(b"preview16")
+    (style_dir / "preview-9x16.jpg").write_bytes(b"preview9")
+    schema_dir = root / "schemas"
+    schema_dir.mkdir()
+    (schema_dir / "style-v2.1.schema.json").write_text("{}", encoding="utf-8")
+    (root / "LICENSE").write_text("MIT License\n", encoding="utf-8")
+
+
+class SyncIndexTests(unittest.TestCase):
+    def test_sync_cookbook_copies_assets_and_builds_index(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "upstream"
+            output = Path(tmp) / "assets" / "cookbook"
+            source.mkdir()
+            write_sample_upstream(source)
+
+            result = core.sync_cookbook_assets(
+                source_root=source,
+                output_root=output,
+                upstream_url="git@example.com:test/repo.git",
+                commit_sha="abc123",
+                synced_at="2026-06-05T00:00:00+00:00",
+            )
+
+            self.assertEqual(result["style_count"], 1)
+            self.assertTrue((output / "LICENSE").exists())
+            self.assertTrue((output / "schema" / "style-v2.1.schema.json").exists())
+            self.assertTrue((output / "styles" / "mono-test-poster" / "style.json").exists())
+            self.assertTrue((output / "styles-index.json").exists())
+            index = json.loads((output / "styles-index.json").read_text(encoding="utf-8"))
+            self.assertEqual(index["styles"][0]["id"], 1)
+            self.assertEqual(index["styles"][0]["style_slug"], "mono-test-poster")
+            self.assertEqual(index["styles"][0]["updated_from_commit"], "abc123")
