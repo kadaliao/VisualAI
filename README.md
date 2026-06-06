@@ -28,7 +28,18 @@ uv run python skills/visual-prompt-cookbook/scripts/serve_dashboard.py
 安装到本机 Codex skills：
 
 ```bash
-uv run python skills/visual-prompt-cookbook/scripts/install_skill.py
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
+```
+
+这条命令不要求先 clone 本仓库；安装器会下载 `VisualAI` 的 GitHub archive，并把内置的
+`visual-prompt-cookbook` 安装到 `~/.codex/skills/visual-prompt-cookbook`。
+
+开发或调试时，也可以从本地 checkout 安装，并显式指定来源和安装目录：
+
+```bash
+uv run visualai-install-skill \
+  --source-root skills/visual-prompt-cookbook \
+  --skills-root ~/.codex/skills
 ```
 
 ## 来源与许可证

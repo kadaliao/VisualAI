@@ -1,5 +1,8 @@
 .superpowers/
 .venv/
+build/
+dist/
 __pycache__/
 *.pyc
+*.egg-info/
 skills/visual-prompt-cookbook/.dashboard-state/

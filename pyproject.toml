@@ -5,5 +5,11 @@ description = "Local Codex skill source for AI visual prompt workflows."
 requires-python = ">=3.11"
 dependencies = []
 
+[project.scripts]
+visualai-install-skill = "visualai.install_skill:main"
+
 [tool.uv]
-package = false
+package = true
+
+[tool.setuptools.packages.find]
+include = ["visualai*"]
