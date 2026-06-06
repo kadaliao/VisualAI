@@ -189,24 +189,72 @@ def parse_agent(value: str) -> str:
 
 def list_agents() -> str:
     lines = ["Available agents:"]
-    for agent in AGENTS.values():
-        lines.append(f"  {agent.name:<9} {agent.label:<18} {agent.note}")
-    lines.append("  all       All built-in agents  Installs to every built-in target above except custom.")
+    for agent_name in INSTALL_ALL_AGENTS:
+        agent = AGENTS[agent_name]
+        lines.append(f"  {agent.name:<9} {agent.label:<18} {agent_destination(agent)}")
+    lines.append("  all       All built-in agents  every built-in target")
+    lines.append(f"  custom    {AGENTS['custom'].label:<18} pass --target-root or choose a path")
     return "\n".join(lines)
 
 
+def agent_destination(agent: AgentTarget) -> str:
+    if agent.default_root is None:
+        return "custom path"
+    return f"~/{agent.default_root.as_posix()}"
+
+
+def interactive_choices() -> list[str]:
+    return [*INSTALL_ALL_AGENTS, "all", "custom"]
+
+
+def interactive_choice_label(choice: str) -> str:
+    if choice == "all":
+        return "All built-in agents"
+    return AGENTS[choice].label
+
+
+def interactive_choice_destination(choice: str) -> str:
+    if choice == "all":
+        return "every built-in target"
+    if choice == "custom":
+        return "enter a custom skill directory"
+    return agent_destination(AGENTS[choice])
+
+
 def choose_agent_interactively() -> str:
-    choices = [*AGENTS.keys(), "all"]
-    print(list_agents())
+    choices = interactive_choices()
+    print()
+    print(f"Install {SKILL_NAME}")
+    print()
+    print("Choose an agent:")
+    for index, choice in enumerate(choices, start=1):
+        print(f"  {index:>2}. {interactive_choice_label(choice):<22} {interactive_choice_destination(choice)}")
     print()
     while True:
         try:
-            selected = input("Choose an agent [codex]: ").strip().lower() or "codex"
+            selected = input("Enter number or agent name [1]: ").strip().lower() or "1"
         except EOFError:
             return "codex"
-        if selected in choices:
+
+        if selected.isdigit():
+            index = int(selected)
+            if 1 <= index <= len(choices):
+                return choices[index - 1]
+        elif selected in choices:
             return selected
-        print(f"Unknown agent {selected!r}.")
+
+        print(f"Unknown choice {selected!r}.")
+
+
+def prompt_target_root_interactively() -> Path:
+    while True:
+        try:
+            selected = input("Custom skill directory: ").strip()
+        except EOFError as exc:
+            raise ValueError("--target-root is required for --agent custom") from exc
+        if selected:
+            return Path(selected)
+        print("Enter a directory path.")
 
 
 def resolve_source_root(source_root: Path | None, archive_url: str | None) -> tuple[Path, tempfile.TemporaryDirectory[str] | None]:
@@ -272,8 +320,11 @@ def main() -> None:
     if selected_agent is None:
         selected_agent = choose_agent_interactively()
 
-    target_root = args.target_root
     try:
+        target_root = args.target_root
+        if selected_agent == "custom" and target_root is None:
+            target_root = prompt_target_root_interactively()
+
         source_root, tmp = resolve_source_root(args.source_root, args.archive_url)
         try:
             results = install_selected_agents(

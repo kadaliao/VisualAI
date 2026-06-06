@@ -230,7 +230,66 @@ class InstallCliTests(unittest.TestCase):
             )
 
             self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("Install visual-prompt-cookbook", result.stdout)
             self.assertIn("Choose an agent", result.stdout)
+            self.assertIn("1. Codex", result.stdout)
+            self.assertIn("Claude Code", result.stdout)
+            self.assertTrue((target_root / "visual-prompt-cookbook" / "SKILL.md").exists())
+
+    def test_project_command_interactively_selects_agent_by_number(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "source-skill"
+            target_root = root / "claude-skills"
+            (source / "scripts").mkdir(parents=True)
+            (source / "SKILL.md").write_text("---\nname: demo\n---\n", encoding="utf-8")
+
+            result = subprocess.run(
+                [
+                    "uv",
+                    "run",
+                    "visualai-install",
+                    "--source-root",
+                    str(source),
+                    "--target-root",
+                    str(target_root),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                input="2\n",
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("Installed visual-prompt-cookbook for Claude Code", result.stdout)
+            self.assertTrue((target_root / "visual-prompt-cookbook" / "SKILL.md").exists())
+
+    def test_project_command_interactively_selects_custom_target(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "source-skill"
+            target_root = root / "custom-skills"
+            (source / "scripts").mkdir(parents=True)
+            (source / "SKILL.md").write_text("---\nname: demo\n---\n", encoding="utf-8")
+
+            result = subprocess.run(
+                [
+                    "uv",
+                    "run",
+                    "visualai-install",
+                    "--source-root",
+                    str(source),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                input=f"10\n{target_root}\n",
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("Custom skill directory", result.stdout)
             self.assertTrue((target_root / "visual-prompt-cookbook" / "SKILL.md").exists())
 
     def test_custom_agent_requires_target_root(self) -> None:
