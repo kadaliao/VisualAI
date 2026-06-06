@@ -11,6 +11,9 @@ import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
+import questionary
+import tqdm
+
 
 SKILL_NAME = "visual-prompt-cookbook"
 SKILL_RELATIVE_PATH = Path("skills") / SKILL_NAME
@@ -114,40 +117,24 @@ def find_archived_skill_root(extract_root: Path) -> Path:
     raise FileNotFoundError(f"Archive does not contain {SKILL_RELATIVE_PATH}")
 
 
-def format_bytes(size: int) -> str:
-    units = ("B", "KB", "MB", "GB")
-    value = float(max(size, 0))
-    for unit in units:
-        if value < 1024 or unit == units[-1]:
-            if unit == "B":
-                return f"{int(value)} {unit}"
-            return f"{value:.1f} {unit}"
-        value /= 1024
-
-
-def download_progress_hook(*, enabled: bool):
-    if not enabled:
-        return None
-
-    def report(block_count: int, block_size: int, total_size: int) -> None:
-        downloaded = max(block_count * block_size, 0)
-        if total_size > 0:
-            downloaded = min(downloaded, total_size)
-            percent = int(downloaded * 100 / total_size)
-            filled = min(20, int(percent / 5))
-            bar = "#" * filled + "-" * (20 - filled)
-            sys.stdout.write(
-                f"\rDownloading skill package [{bar}] {percent:3d}% "
-                f"{format_bytes(downloaded)}/{format_bytes(total_size)}\033[K"
-            )
-        else:
-            sys.stdout.write(
-                f"\rDownloading skill package [{'?' * 20}] ---% "
-                f"{format_bytes(downloaded)} downloaded\033[K"
-            )
-        sys.stdout.flush()
-
-    return report
+def download_archive(archive_url: str, archive_path: Path, *, verbose: bool = False) -> None:
+    with urllib.request.urlopen(archive_url) as response:
+        total = int(response.headers.get("length") or response.headers.get("content-length") or 0) or None
+        with archive_path.open("wb") as output:
+            if verbose:
+                with tqdm.tqdm.wrapattr(
+                    response,
+                    "read",
+                    desc="Downloading skill package",
+                    total=total,
+                    unit="B",
+                    unit_scale=True,
+                    unit_divisor=1024,
+                    file=sys.stdout,
+                ) as readable:
+                    shutil.copyfileobj(readable, output)
+            else:
+                shutil.copyfileobj(response, output)
 
 
 def download_skill_root(archive_url: str, work_dir: Path, *, verbose: bool = False) -> Path:
@@ -157,17 +144,13 @@ def download_skill_root(archive_url: str, work_dir: Path, *, verbose: bool = Fal
     last_error: BaseException | None = None
     for attempt in range(1, DOWNLOAD_ATTEMPTS + 1):
         try:
-            urllib.request.urlretrieve(archive_url, archive_path, reporthook=download_progress_hook(enabled=verbose))
-            if verbose:
-                print()
+            download_archive(archive_url, archive_path, verbose=verbose)
             break
         except DOWNLOAD_ERRORS as exc:
             last_error = exc
             archive_path.unlink(missing_ok=True)
-            if verbose:
-                print()
-                if attempt < DOWNLOAD_ATTEMPTS:
-                    print(f"Download interrupted; retrying ({attempt + 1}/{DOWNLOAD_ATTEMPTS})...")
+            if verbose and attempt < DOWNLOAD_ATTEMPTS:
+                print(f"Download interrupted; retrying ({attempt + 1}/{DOWNLOAD_ATTEMPTS})...")
     else:
         raise RuntimeError(f"Failed to download skill package after {DOWNLOAD_ATTEMPTS} attempts: {last_error}")
 
@@ -286,6 +269,20 @@ def interactive_choice_destination(choice: str) -> str:
 
 def choose_agent_interactively() -> str:
     choices = interactive_choices()
+    if sys.stdin.isatty():
+        selected = questionary.select(
+            "Choose an agent:",
+            choices=[
+                questionary.Choice(
+                    title=f"{interactive_choice_label(choice)} ({interactive_choice_destination(choice)})",
+                    value=choice,
+                )
+                for choice in choices
+            ],
+            default="codex",
+        ).ask()
+        return selected or "codex"
+
     print()
     print(f"Install {SKILL_NAME}")
     print()

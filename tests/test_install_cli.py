@@ -6,7 +6,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from visualai import install_skill
 
@@ -328,38 +328,60 @@ class InstallCliTests(unittest.TestCase):
             self.assertIn("Installing for Claude Code", result.stdout)
             self.assertTrue((home / ".claude" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
 
+    def test_project_dependencies_include_tqdm_and_questionary(self) -> None:
+        pyproject = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text(encoding="utf-8")
+
+        self.assertIn("tqdm", pyproject)
+        self.assertIn("questionary", pyproject)
+
+    def test_download_uses_tqdm_progress_bar(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            response = Mock()
+            response.headers = {"length": "1"}
+            response.__enter__ = Mock(return_value=response)
+            response.__exit__ = Mock(return_value=False)
+
+            with patch.object(install_skill.urllib.request, "urlopen", return_value=response):
+                with patch.object(install_skill.tqdm.tqdm, "wrapattr") as wrapattr:
+                    wrapped = Mock()
+                    wrapped.__enter__ = Mock(return_value=Mock(read=Mock(side_effect=[b"x", b""])))
+                    wrapped.__exit__ = Mock(return_value=False)
+                    wrapattr.return_value = wrapped
+                    with patch.object(install_skill.shutil, "copyfileobj"):
+                        install_skill.download_archive("https://example.test/archive.zip", root / "archive.zip", verbose=True)
+
+            wrapattr.assert_called_once()
+            self.assertEqual(wrapattr.call_args.kwargs["desc"], "Downloading skill package")
+
+    def test_interactive_tty_agent_menu_uses_questionary(self) -> None:
+        with patch.object(install_skill.sys.stdin, "isatty", return_value=True):
+            with patch.object(install_skill.questionary, "select") as select:
+                select.return_value.ask.return_value = "claude"
+
+                selected = install_skill.choose_agent_interactively()
+
+        self.assertEqual(selected, "claude")
+        select.assert_called_once()
+
     def test_download_retries_after_incomplete_read(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             calls = 0
 
-            def retrieve(_: str, filename: Path, reporthook=None):
+            def download(_: str, filename: Path, verbose: bool = False):
                 nonlocal calls
                 calls += 1
                 if calls == 1:
                     raise http.client.IncompleteRead(b"partial")
                 with zipfile.ZipFile(filename, "w") as archive:
                     archive.writestr("VisualAI-main/skills/visual-prompt-cookbook/SKILL.md", "---\nname: demo\n---\n")
-                if reporthook:
-                    reporthook(1, 1, 1)
-                return filename, {}
 
-            with patch.object(install_skill.urllib.request, "urlretrieve", side_effect=retrieve):
+            with patch.object(install_skill, "download_archive", side_effect=download):
                 source_root = install_skill.download_skill_root("https://example.test/archive.zip", root, verbose=False)
 
             self.assertEqual(calls, 2)
             self.assertTrue((source_root / "SKILL.md").exists())
-
-    def test_unknown_size_progress_uses_bar_and_clears_line_tail(self) -> None:
-        with patch.object(install_skill.sys.stdout, "write") as write:
-            hook = install_skill.download_progress_hook(enabled=True)
-            self.assertIsNotNone(hook)
-            hook(60000, 1024, -1)
-
-        line = write.call_args.args[0]
-        self.assertIn("[????????????????????] ---%", line)
-        self.assertIn("downloaded", line)
-        self.assertIn("\033[K", line)
 
     def test_cli_reports_download_failure_without_traceback(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
