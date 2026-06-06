@@ -345,10 +345,21 @@ class InstallCliTests(unittest.TestCase):
                 return filename, {}
 
             with patch.object(install_skill.urllib.request, "urlretrieve", side_effect=retrieve):
-                source_root = install_skill.download_skill_root("https://example.test/archive.zip", root, verbose=True)
+                source_root = install_skill.download_skill_root("https://example.test/archive.zip", root, verbose=False)
 
             self.assertEqual(calls, 2)
             self.assertTrue((source_root / "SKILL.md").exists())
+
+    def test_unknown_size_progress_uses_bar_and_clears_line_tail(self) -> None:
+        with patch.object(install_skill.sys.stdout, "write") as write:
+            hook = install_skill.download_progress_hook(enabled=True)
+            self.assertIsNotNone(hook)
+            hook(60000, 1024, -1)
+
+        line = write.call_args.args[0]
+        self.assertIn("[????????????????????] ---%", line)
+        self.assertIn("downloaded", line)
+        self.assertIn("\033[K", line)
 
     def test_cli_reports_download_failure_without_traceback(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

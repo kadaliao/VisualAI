@@ -138,10 +138,13 @@ def download_progress_hook(*, enabled: bool):
             bar = "#" * filled + "-" * (20 - filled)
             sys.stdout.write(
                 f"\rDownloading skill package [{bar}] {percent:3d}% "
-                f"{format_bytes(downloaded)}/{format_bytes(total_size)}"
+                f"{format_bytes(downloaded)}/{format_bytes(total_size)}\033[K"
             )
         else:
-            sys.stdout.write(f"\rDownloading skill package {format_bytes(downloaded)}")
+            sys.stdout.write(
+                f"\rDownloading skill package [{'?' * 20}] ---% "
+                f"{format_bytes(downloaded)} downloaded\033[K"
+            )
         sys.stdout.flush()
 
     return report
