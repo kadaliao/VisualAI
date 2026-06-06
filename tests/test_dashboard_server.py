@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from io import BytesIO
 from pathlib import Path
 from unittest.mock import Mock, patch
 
@@ -11,6 +12,20 @@ from tests.helpers import load_script_module
 
 core = load_script_module("cookbook_core")
 dashboard_server = load_script_module("serve_dashboard")
+
+
+class FakeSocket:
+    def __init__(self, payload: bytes) -> None:
+        self.input = BytesIO(payload)
+        self.output = BytesIO()
+
+    def makefile(self, mode: str, *_args, **_kwargs):
+        if "r" in mode:
+            return self.input
+        return self.output
+
+    def sendall(self, payload: bytes) -> None:
+        self.output.write(payload)
 
 
 class DashboardStateTests(unittest.TestCase):
@@ -77,6 +92,36 @@ class DashboardStateTests(unittest.TestCase):
                                 language="zh-CN",
                                 open_browser=False,
                             )
+
+    def test_select_request_records_event_and_shuts_down_server(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            state_dir = Path(tmp)
+            request = (
+                b"POST /api/select HTTP/1.1\r\n"
+                b"Content-Type: application/json\r\n"
+                b"Content-Length: 42\r\n"
+                b"\r\n"
+                b'{"style_slug":"mono-test-poster","id":1}'
+            )
+            server = Mock()
+            server.shutdown_requested = False
+            handler_class = type(
+                "TestDashboardHandler",
+                (dashboard_server.DashboardHandler,),
+                {
+                    "dashboard_root": state_dir / "assets" / "dashboard",
+                    "cookbook_root": state_dir / "assets" / "cookbook",
+                    "state_dir": state_dir,
+                    "language": "zh-CN",
+                },
+            )
+
+            handler_class(FakeSocket(request), ("127.0.0.1", 1), server)
+
+            self.assertTrue(server.shutdown_requested)
+            server.shutdown.assert_called_once()
+            saved = json.loads((state_dir / "events.jsonl").read_text(encoding="utf-8").strip())
+            self.assertEqual(saved["style_slug"], "mono-test-poster")
 
 
 if __name__ == "__main__":

@@ -332,7 +332,8 @@ class InstallCliTests(unittest.TestCase):
         pyproject = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text(encoding="utf-8")
 
         self.assertIn("tqdm", pyproject)
-        self.assertIn("questionary", pyproject)
+        self.assertIn("simple-term-menu", pyproject)
+        self.assertNotIn("questionary", pyproject)
 
     def test_download_uses_tqdm_progress_bar(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -354,15 +355,15 @@ class InstallCliTests(unittest.TestCase):
             wrapattr.assert_called_once()
             self.assertEqual(wrapattr.call_args.kwargs["desc"], "Downloading skill package")
 
-    def test_interactive_tty_agent_menu_uses_questionary(self) -> None:
+    def test_interactive_tty_agent_menu_uses_term_menu(self) -> None:
         with patch.object(install_skill.sys.stdin, "isatty", return_value=True):
-            with patch.object(install_skill.questionary, "select") as select:
-                select.return_value.ask.return_value = "claude"
+            with patch.object(install_skill, "TerminalMenu") as terminal_menu:
+                terminal_menu.return_value.show.return_value = 1
 
                 selected = install_skill.choose_agent_interactively()
 
         self.assertEqual(selected, "claude")
-        select.assert_called_once()
+        terminal_menu.assert_called_once()
 
     def test_download_retries_after_incomplete_read(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

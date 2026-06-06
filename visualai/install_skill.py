@@ -11,8 +11,8 @@ import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
-import questionary
 import tqdm
+from simple_term_menu import TerminalMenu
 
 
 SKILL_NAME = "visual-prompt-cookbook"
@@ -270,18 +270,16 @@ def interactive_choice_destination(choice: str) -> str:
 def choose_agent_interactively() -> str:
     choices = interactive_choices()
     if sys.stdin.isatty():
-        selected = questionary.select(
-            "Choose an agent:",
-            choices=[
-                questionary.Choice(
-                    title=f"{interactive_choice_label(choice)} ({interactive_choice_destination(choice)})",
-                    value=choice,
-                )
-                for choice in choices
-            ],
-            default="codex",
-        ).ask()
-        return selected or "codex"
+        menu = TerminalMenu(
+            [f"{interactive_choice_label(choice)} ({interactive_choice_destination(choice)})" for choice in choices],
+            title=f"Install {SKILL_NAME}\nChoose an agent:",
+            cursor_index=0,
+            clear_screen=False,
+        )
+        selected_index = menu.show()
+        if selected_index is None:
+            return "codex"
+        return choices[selected_index]
 
     print()
     print(f"Install {SKILL_NAME}")

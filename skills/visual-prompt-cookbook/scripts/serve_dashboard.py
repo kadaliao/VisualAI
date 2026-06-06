@@ -6,6 +6,7 @@ import os
 import socket
 import subprocess
 import sys
+import threading
 import time
 import urllib.request
 import webbrowser
@@ -63,6 +64,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         payload = json.loads(self.rfile.read(length).decode("utf-8"))
         event = record_dashboard_selection(self.state_dir, payload)
         self._send_json(event)
+        self._request_shutdown()
 
     def _send_json(self, payload: object) -> None:
         encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -80,6 +82,12 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
     def skill_root(self) -> Path:
         return self.dashboard_root.parents[1]
+
+    def _request_shutdown(self) -> None:
+        if getattr(self.server, "shutdown_requested", False):
+            return
+        self.server.shutdown_requested = True
+        threading.Thread(target=self.server.shutdown, daemon=True).start()
 
 
 def build_handler(skill_root: Path, language: str) -> type[DashboardHandler]:
