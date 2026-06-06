@@ -104,6 +104,39 @@ class InstallCliTests(unittest.TestCase):
             self.assertTrue((installed / "SKILL.md").exists())
             self.assertTrue((installed / "scripts" / "tool.py").exists())
 
+    def test_project_command_installs_hermes_to_default_home(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "source-skill"
+            home = root / "home"
+            (source / "scripts").mkdir(parents=True)
+            (source / "SKILL.md").write_text("---\nname: demo\n---\n", encoding="utf-8")
+            (source / "scripts" / "tool.py").write_text("print('ok')", encoding="utf-8")
+
+            result = subprocess.run(
+                [
+                    "uv",
+                    "run",
+                    "visualai-install",
+                    "--agent",
+                    "hermes",
+                    "--source-root",
+                    str(source),
+                    "--home",
+                    str(home),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            installed = home / ".hermes" / "skills" / "visual-prompt-cookbook"
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("Hermes Agent", result.stdout)
+            self.assertTrue((installed / "SKILL.md").exists())
+            self.assertTrue((installed / "scripts" / "tool.py").exists())
+
     def test_project_command_installs_all_known_agents(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -135,6 +168,14 @@ class InstallCliTests(unittest.TestCase):
             self.assertTrue((home / ".codex" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
             self.assertTrue((home / ".claude" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
             self.assertTrue((home / ".cursor" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
+            self.assertTrue((home / ".config" / "opencode" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
+            self.assertTrue(
+                (home / ".codeium" / "windsurf" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists()
+            )
+            self.assertTrue(
+                (home / ".openclaw-autoclaw" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists()
+            )
+            self.assertTrue((home / ".hermes" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
             self.assertTrue(
                 (
                     home
@@ -160,6 +201,7 @@ class InstallCliTests(unittest.TestCase):
         self.assertIn("codex", result.stdout)
         self.assertIn("claude", result.stdout)
         self.assertIn("gemini", result.stdout)
+        self.assertIn("hermes", result.stdout)
         self.assertIn("all", result.stdout)
 
     def test_project_command_interactively_selects_agent(self) -> None:

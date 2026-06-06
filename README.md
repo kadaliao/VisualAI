@@ -21,6 +21,7 @@ uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent
 uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent claude
 uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent cursor
 uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent gemini
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent hermes
 ```
 
 查看完整列表：
@@ -40,6 +41,7 @@ uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --list-
 | OpenCode | `~/.config/opencode/skills/visual-prompt-cookbook` |
 | Windsurf | `~/.codeium/windsurf/skills/visual-prompt-cookbook` |
 | OpenClaw | `~/.openclaw-autoclaw/skills/visual-prompt-cookbook` |
+| Hermes Agent | `~/.hermes/skills/visual-prompt-cookbook` |
 
 安装到所有内置目标：
 

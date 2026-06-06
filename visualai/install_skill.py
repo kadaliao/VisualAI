@@ -74,6 +74,13 @@ AGENTS: dict[str, AgentTarget] = {
         layout="skill",
         note="Installs to ~/.openclaw-autoclaw/skills.",
     ),
+    "hermes": AgentTarget(
+        name="hermes",
+        label="Hermes Agent",
+        default_root=Path(".hermes") / "skills",
+        layout="skill",
+        note="Installs to ~/.hermes/skills.",
+    ),
     "custom": AgentTarget(
         name="custom",
         label="Custom directory",
@@ -82,7 +89,7 @@ AGENTS: dict[str, AgentTarget] = {
         note="Installs to a directory passed with --target-root.",
     ),
 }
-INSTALL_ALL_AGENTS = ("codex", "claude", "cursor", "gemini", "opencode", "windsurf", "openclaw")
+INSTALL_ALL_AGENTS = ("codex", "claude", "cursor", "gemini", "opencode", "windsurf", "openclaw", "hermes")
 
 
 def default_local_skill_root() -> Path:
