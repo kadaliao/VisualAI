@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import http.client
 import subprocess
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
+
+from visualai import install_skill
 
 
 class InstallCliTests(unittest.TestCase):
@@ -323,6 +327,90 @@ class InstallCliTests(unittest.TestCase):
             self.assertIn("100%", result.stdout)
             self.assertIn("Installing for Claude Code", result.stdout)
             self.assertTrue((home / ".claude" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
+
+    def test_download_retries_after_incomplete_read(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            calls = 0
+
+            def retrieve(_: str, filename: Path, reporthook=None):
+                nonlocal calls
+                calls += 1
+                if calls == 1:
+                    raise http.client.IncompleteRead(b"partial")
+                with zipfile.ZipFile(filename, "w") as archive:
+                    archive.writestr("VisualAI-main/skills/visual-prompt-cookbook/SKILL.md", "---\nname: demo\n---\n")
+                if reporthook:
+                    reporthook(1, 1, 1)
+                return filename, {}
+
+            with patch.object(install_skill.urllib.request, "urlretrieve", side_effect=retrieve):
+                source_root = install_skill.download_skill_root("https://example.test/archive.zip", root, verbose=True)
+
+            self.assertEqual(calls, 2)
+            self.assertTrue((source_root / "SKILL.md").exists())
+
+    def test_cli_reports_download_failure_without_traceback(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            helper = Path(tmp) / "fail_urlretrieve.py"
+            helper.write_text(
+                "\n".join(
+                    [
+                        "import http.client",
+                        "import sys",
+                        "import urllib.request",
+                        "from visualai import install_skill",
+                        "",
+                        "def fail(*args, **kwargs):",
+                        "    raise http.client.IncompleteRead(b'partial')",
+                        "",
+                        "urllib.request.urlretrieve = fail",
+                        "sys.argv = ['visualai-install', '--agent', 'codex', '--archive-url', 'https://example.test/archive.zip', '--home', sys.argv[1]]",
+                        "install_skill.main()",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                ["uv", "run", "python", str(helper), str(Path(tmp) / "home")],
+                cwd=Path(__file__).resolve().parents[1],
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Failed to download skill package", result.stderr)
+            self.assertNotIn("Traceback", result.stderr)
+
+    def test_cli_reports_bad_archive_without_traceback(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            archive_path = root / "broken.zip"
+            archive_path.write_bytes(b"not a zip")
+
+            result = subprocess.run(
+                [
+                    "uv",
+                    "run",
+                    "visualai-install",
+                    "--agent",
+                    "codex",
+                    "--archive-url",
+                    archive_path.as_uri(),
+                    "--home",
+                    str(root / "home"),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Downloaded archive is not a valid zip file", result.stderr)
+            self.assertNotIn("Traceback", result.stderr)
 
     def test_custom_agent_requires_target_root(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

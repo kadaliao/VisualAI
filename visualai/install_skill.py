@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import shutil
 import sys
@@ -14,6 +15,8 @@ from pathlib import Path
 SKILL_NAME = "visual-prompt-cookbook"
 SKILL_RELATIVE_PATH = Path("skills") / SKILL_NAME
 DEFAULT_ARCHIVE_URL = "https://github.com/kadaliao/VisualAI/archive/refs/heads/main.zip"
+DOWNLOAD_ATTEMPTS = 3
+DOWNLOAD_ERRORS = (http.client.IncompleteRead, OSError, urllib.error.URLError)
 
 
 @dataclass(frozen=True)
@@ -148,14 +151,31 @@ def download_skill_root(archive_url: str, work_dir: Path, *, verbose: bool = Fal
     archive_path = work_dir / "visualai.zip"
     if verbose:
         print("Downloading skill package...")
-    urllib.request.urlretrieve(archive_url, archive_path, reporthook=download_progress_hook(enabled=verbose))
-    if verbose:
-        print()
+    last_error: BaseException | None = None
+    for attempt in range(1, DOWNLOAD_ATTEMPTS + 1):
+        try:
+            urllib.request.urlretrieve(archive_url, archive_path, reporthook=download_progress_hook(enabled=verbose))
+            if verbose:
+                print()
+            break
+        except DOWNLOAD_ERRORS as exc:
+            last_error = exc
+            archive_path.unlink(missing_ok=True)
+            if verbose:
+                print()
+                if attempt < DOWNLOAD_ATTEMPTS:
+                    print(f"Download interrupted; retrying ({attempt + 1}/{DOWNLOAD_ATTEMPTS})...")
+    else:
+        raise RuntimeError(f"Failed to download skill package after {DOWNLOAD_ATTEMPTS} attempts: {last_error}")
+
     extract_root = work_dir / "archive"
     if verbose:
         print("Unpacking skill package...")
-    with zipfile.ZipFile(archive_path) as archive:
-        archive.extractall(extract_root)
+    try:
+        with zipfile.ZipFile(archive_path) as archive:
+            archive.extractall(extract_root)
+    except zipfile.BadZipFile as exc:
+        raise RuntimeError("Downloaded archive is not a valid zip file; rerun the installer to download it again") from exc
     return find_archived_skill_root(extract_root)
 
 
@@ -383,7 +403,7 @@ def main() -> None:
         finally:
             if tmp is not None:
                 tmp.cleanup()
-    except (OSError, ValueError) as exc:
+    except (OSError, ValueError, RuntimeError) as exc:
         parser.exit(1, f"error: {exc}\n")
 
     for agent, installed in results:
