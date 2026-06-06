@@ -1,17 +1,59 @@
-# VisualAI
+# visual-prompt-cookbook
 
-这个仓库维护一个本地 Codex skill：`visual-prompt-cookbook`。
+给 Codex 安装一个视觉提示词 skill，用来浏览视觉风格、补全变量，并生成可直接用于图片模型的提示词。
 
-第一版目标：
+## 一行安装
 
-- 从 `kadaliao/AI-Visual-Prompt-Cookbook` 同步风格 JSON 和预览图。
-- Serve 本地 dashboard，帮助用户浏览和选择风格。
-- 让 Codex 主动补全变量，并默认输出最终可用提示词。
-- 用户明确要求生成图片时，再把提示词交给图像生成能力。
+不需要 clone 这个仓库，直接运行：
 
-Python 命令统一使用 `uv run python`。
+```bash
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
+```
 
-## 常用命令
+安装后，skill 会位于：
+
+```text
+~/.codex/skills/visual-prompt-cookbook
+```
+
+重启 Codex 后就可以直接让 Codex 使用这个 skill。你可以说：
+
+```text
+帮我做一张适合小红书封面的视觉提示词
+```
+
+或者：
+
+```text
+打开 visual-prompt-cookbook 的风格 dashboard，我想先挑一个风格
+```
+
+## 更新
+
+重新运行同一条命令即可覆盖安装到最新版：
+
+```bash
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
+```
+
+## 这个 Skill 做什么
+
+- 从 `AI-Visual-Prompt-Cookbook` 整理出一批视觉风格。
+- 提供本地 dashboard，方便浏览、筛选和选择风格。
+- 让 Codex 根据你要做的图片主动补全风格变量。
+- 默认输出完整提示词；只有你明确要求生成图片时，Codex 才会继续调用图像生成能力。
+
+## 开发者命令
+
+本仓库是 `visual-prompt-cookbook` skill 的源码和同步工具。Python 命令统一使用 `uv run python`。
+
+从本地 checkout 安装：
+
+```bash
+uv run visualai-install-skill \
+  --source-root skills/visual-prompt-cookbook \
+  --skills-root ~/.codex/skills
+```
 
 同步上游 Cookbook：
 
@@ -23,23 +65,6 @@ uv run python skills/visual-prompt-cookbook/scripts/sync_cookbook.py
 
 ```bash
 uv run python skills/visual-prompt-cookbook/scripts/serve_dashboard.py
-```
-
-安装到本机 Codex skills：
-
-```bash
-uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
-```
-
-这条命令不要求先 clone 本仓库；安装器会下载 `VisualAI` 的 GitHub archive，并把内置的
-`visual-prompt-cookbook` 安装到 `~/.codex/skills/visual-prompt-cookbook`。
-
-开发或调试时，也可以从本地 checkout 安装，并显式指定来源和安装目录：
-
-```bash
-uv run visualai-install-skill \
-  --source-root skills/visual-prompt-cookbook \
-  --skills-root ~/.codex/skills
 ```
 
 ## 来源与许可证
