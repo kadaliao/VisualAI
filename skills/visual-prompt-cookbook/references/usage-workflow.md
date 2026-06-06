@@ -21,4 +21,6 @@ Render the selected `prompt_template` with the final variables. Do not leave `{V
 
 ## Image Generation
 
-Only generate an image when the user explicitly asks for generation. Otherwise, stop after the final prompt.
+Only generate an image when the user explicitly asks for generation and the current agent clearly has an image generation tool. Otherwise, stop after the final prompt.
+
+Do not ask whether to generate an image unless the current agent can actually do it. If no image generation tool is available, deliver the prompt and variables without offering generation as a next step. If the user asks for generation in a tool-less agent, state that this agent can prepare the prompt but cannot render the image here.

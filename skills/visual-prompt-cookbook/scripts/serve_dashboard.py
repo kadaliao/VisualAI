@@ -3,6 +3,12 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import socket
+import subprocess
+import sys
+import time
+import urllib.request
+import webbrowser
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
@@ -76,17 +82,9 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         return self.dashboard_root.parents[1]
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Serve the Visual Prompt Cookbook dashboard.")
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=8765)
-    parser.add_argument("--skill-root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--language", default=os.environ.get("VISUAL_PROMPT_DASHBOARD_LANGUAGE", "auto"))
-    args = parser.parse_args()
-
-    paths = dashboard_paths(args.skill_root.resolve())
-    language = normalize_dashboard_language(args.language)
-    handler = type(
+def build_handler(skill_root: Path, language: str) -> type[DashboardHandler]:
+    paths = dashboard_paths(skill_root.resolve())
+    return type(
         "ConfiguredDashboardHandler",
         (DashboardHandler,),
         {
@@ -96,10 +94,100 @@ def main() -> None:
             "language": language,
         },
     )
-    server = ThreadingHTTPServer((args.host, args.port), handler)
-    url = f"http://{args.host}:{server.server_port}"
+
+
+def find_available_port(host: str) -> int:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.bind((host, 0))
+        return int(sock.getsockname()[1])
+
+
+def wait_for_server(url: str, timeout: float = 5.0) -> bool:
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        try:
+            with urllib.request.urlopen(f"{url}/api/config", timeout=0.5) as response:
+                return response.status == 200
+        except OSError:
+            time.sleep(0.1)
+    return False
+
+
+def run_foreground_server(host: str, port: int, skill_root: Path, language: str) -> str:
+    handler = build_handler(skill_root, language)
+    server = ThreadingHTTPServer((host, port), handler)
+    url = f"http://{host}:{server.server_port}"
     print(url, flush=True)
     server.serve_forever()
+    return url
+
+
+def start_background_server(
+    *,
+    host: str,
+    port: int,
+    skill_root: Path,
+    language: str,
+    open_browser: bool,
+) -> str:
+    selected_port = port or find_available_port(host)
+    url = f"http://{host}:{selected_port}"
+    state_dir = dashboard_paths(skill_root.resolve())["state_dir"]
+    state_dir.mkdir(parents=True, exist_ok=True)
+    log_path = state_dir / "server.log"
+    command = [
+        sys.executable,
+        str(Path(__file__).resolve()),
+        "--host",
+        host,
+        "--port",
+        str(selected_port),
+        "--skill-root",
+        str(skill_root.resolve()),
+        "--language",
+        language,
+        "--foreground",
+        "--no-open",
+    ]
+    with log_path.open("a", encoding="utf-8") as log_file:
+        process = subprocess.Popen(
+            command,
+            stdout=log_file,
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+    (state_dir / "server.pid").write_text(f"{process.pid}\n", encoding="utf-8")
+    if not wait_for_server(url):
+        exit_status = process.poll()
+        detail = f" exited with status {exit_status}" if exit_status is not None else ""
+        raise RuntimeError(f"Dashboard server failed to start{detail}; see {log_path}")
+    if open_browser:
+        webbrowser.open(url)
+    print(url, flush=True)
+    return url
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Serve the Visual Prompt Cookbook dashboard.")
+    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=0)
+    parser.add_argument("--skill-root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--language", default=os.environ.get("VISUAL_PROMPT_DASHBOARD_LANGUAGE", "auto"))
+    parser.add_argument("--foreground", action="store_true", help="Run the HTTP server in this process.")
+    parser.add_argument("--no-open", action="store_true", help="Do not open the dashboard in the default browser.")
+    args = parser.parse_args()
+
+    language = normalize_dashboard_language(args.language)
+    if args.foreground:
+        run_foreground_server(args.host, args.port, args.skill_root.resolve(), language)
+        return
+    start_background_server(
+        host=args.host,
+        port=args.port,
+        skill_root=args.skill_root.resolve(),
+        language=language,
+        open_browser=not args.no_open,
+    )
 
 
 if __name__ == "__main__":

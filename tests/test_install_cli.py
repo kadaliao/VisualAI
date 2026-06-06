@@ -292,6 +292,38 @@ class InstallCliTests(unittest.TestCase):
             self.assertIn("Custom skill directory", result.stdout)
             self.assertTrue((target_root / "visual-prompt-cookbook" / "SKILL.md").exists())
 
+    def test_project_command_reports_archive_progress_after_interactive_choice(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            archive_path = root / "visualai.zip"
+            home = root / "home"
+            with zipfile.ZipFile(archive_path, "w") as archive:
+                archive.writestr("VisualAI-main/skills/visual-prompt-cookbook/SKILL.md", "---\nname: demo\n---\n")
+
+            result = subprocess.run(
+                [
+                    "uv",
+                    "run",
+                    "visualai-install",
+                    "--archive-url",
+                    archive_path.as_uri(),
+                    "--home",
+                    str(home),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                input="2\n",
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("Downloading skill package", result.stdout)
+            self.assertIn("[", result.stdout)
+            self.assertIn("100%", result.stdout)
+            self.assertIn("Installing for Claude Code", result.stdout)
+            self.assertTrue((home / ".claude" / "skills" / "visual-prompt-cookbook" / "SKILL.md").exists())
+
     def test_custom_agent_requires_target_root(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / "source-skill"

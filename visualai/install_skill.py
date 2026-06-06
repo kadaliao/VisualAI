@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import sys
 import tempfile
 import urllib.request
 import zipfile
@@ -110,10 +111,49 @@ def find_archived_skill_root(extract_root: Path) -> Path:
     raise FileNotFoundError(f"Archive does not contain {SKILL_RELATIVE_PATH}")
 
 
-def download_skill_root(archive_url: str, work_dir: Path) -> Path:
+def format_bytes(size: int) -> str:
+    units = ("B", "KB", "MB", "GB")
+    value = float(max(size, 0))
+    for unit in units:
+        if value < 1024 or unit == units[-1]:
+            if unit == "B":
+                return f"{int(value)} {unit}"
+            return f"{value:.1f} {unit}"
+        value /= 1024
+
+
+def download_progress_hook(*, enabled: bool):
+    if not enabled:
+        return None
+
+    def report(block_count: int, block_size: int, total_size: int) -> None:
+        downloaded = max(block_count * block_size, 0)
+        if total_size > 0:
+            downloaded = min(downloaded, total_size)
+            percent = int(downloaded * 100 / total_size)
+            filled = min(20, int(percent / 5))
+            bar = "#" * filled + "-" * (20 - filled)
+            sys.stdout.write(
+                f"\rDownloading skill package [{bar}] {percent:3d}% "
+                f"{format_bytes(downloaded)}/{format_bytes(total_size)}"
+            )
+        else:
+            sys.stdout.write(f"\rDownloading skill package {format_bytes(downloaded)}")
+        sys.stdout.flush()
+
+    return report
+
+
+def download_skill_root(archive_url: str, work_dir: Path, *, verbose: bool = False) -> Path:
     archive_path = work_dir / "visualai.zip"
-    urllib.request.urlretrieve(archive_url, archive_path)
+    if verbose:
+        print("Downloading skill package...")
+    urllib.request.urlretrieve(archive_url, archive_path, reporthook=download_progress_hook(enabled=verbose))
+    if verbose:
+        print()
     extract_root = work_dir / "archive"
+    if verbose:
+        print("Unpacking skill package...")
     with zipfile.ZipFile(archive_path) as archive:
         archive.extractall(extract_root)
     return find_archived_skill_root(extract_root)
@@ -232,7 +272,7 @@ def choose_agent_interactively() -> str:
     print()
     while True:
         try:
-            selected = input("Enter number or agent name [1]: ").strip().lower() or "1"
+            selected = input("Enter number or agent name [1]:\n> ").strip().lower() or "1"
         except EOFError:
             return "codex"
 
@@ -249,7 +289,7 @@ def choose_agent_interactively() -> str:
 def prompt_target_root_interactively() -> Path:
     while True:
         try:
-            selected = input("Custom skill directory: ").strip()
+            selected = input("Custom skill directory:\n> ").strip()
         except EOFError as exc:
             raise ValueError("--target-root is required for --agent custom") from exc
         if selected:
@@ -257,21 +297,26 @@ def prompt_target_root_interactively() -> Path:
         print("Enter a directory path.")
 
 
-def resolve_source_root(source_root: Path | None, archive_url: str | None) -> tuple[Path, tempfile.TemporaryDirectory[str] | None]:
+def resolve_source_root(
+    source_root: Path | None,
+    archive_url: str | None,
+    *,
+    verbose: bool = False,
+) -> tuple[Path, tempfile.TemporaryDirectory[str] | None]:
     if source_root and archive_url:
         raise ValueError("--source-root and --archive-url cannot be used together")
     if source_root:
         return assert_skill_root(source_root.expanduser().resolve()), None
     if archive_url:
         tmp = tempfile.TemporaryDirectory()
-        return download_skill_root(archive_url, Path(tmp.name)), tmp
+        return download_skill_root(archive_url, Path(tmp.name), verbose=verbose), tmp
 
     local_source = default_local_skill_root()
     if (local_source / "SKILL.md").is_file():
         return assert_skill_root(local_source.resolve()), None
 
     tmp = tempfile.TemporaryDirectory()
-    return download_skill_root(DEFAULT_ARCHIVE_URL, Path(tmp.name)), tmp
+    return download_skill_root(DEFAULT_ARCHIVE_URL, Path(tmp.name), verbose=verbose), tmp
 
 
 def install_selected_agents(
@@ -286,6 +331,7 @@ def install_selected_agents(
     for agent_name in agent_names:
         agent = AGENTS[agent_name]
         resolved_target_root = resolve_target_root(agent, home, target_root)
+        print(f"Installing for {agent.label}...")
         installed = install_for_agent(source_root, resolved_target_root, agent)
         results.append((agent, installed))
     return results
@@ -317,6 +363,7 @@ def main() -> None:
         return
 
     selected_agent = args.agent
+    interactive = selected_agent is None
     if selected_agent is None:
         selected_agent = choose_agent_interactively()
 
@@ -325,7 +372,7 @@ def main() -> None:
         if selected_agent == "custom" and target_root is None:
             target_root = prompt_target_root_interactively()
 
-        source_root, tmp = resolve_source_root(args.source_root, args.archive_url)
+        source_root, tmp = resolve_source_root(args.source_root, args.archive_url, verbose=interactive or bool(args.archive_url))
         try:
             results = install_selected_agents(
                 selected_agent=selected_agent,
