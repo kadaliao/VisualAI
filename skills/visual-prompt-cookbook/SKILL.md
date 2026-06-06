@@ -41,5 +41,5 @@ To refresh styles from upstream in the source repo, run:
 
 ```bash
 uv run python skills/visual-prompt-cookbook/scripts/sync_cookbook.py
-uv run python skills/visual-prompt-cookbook/scripts/install_skill.py
+uv run visualai-install --agent <agent>
 ```

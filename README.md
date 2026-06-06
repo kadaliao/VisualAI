@@ -1,22 +1,63 @@
 # visual-prompt-cookbook
 
-给 Codex 安装一个视觉提示词 skill，用来浏览视觉风格、补全变量，并生成可直接用于图片模型的提示词。
+给 AI agent 安装一个视觉提示词 skill，用来浏览视觉风格、补全变量，并生成可直接用于图片模型的提示词。
 
 ## 一行安装
 
 不需要 clone 这个仓库，直接运行：
 
 ```bash
-uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install
 ```
 
-安装后，skill 会位于：
+安装器会让你选择常用 agent，并把 skill 安装到对应位置。
 
-```text
-~/.codex/skills/visual-prompt-cookbook
+## 直接指定 Agent
+
+也可以跳过交互，直接传入目标 agent：
+
+```bash
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent codex
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent claude
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent cursor
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent gemini
 ```
 
-重启 Codex 后就可以直接让 Codex 使用这个 skill。你可以说：
+查看完整列表：
+
+```bash
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --list-agents
+```
+
+当前支持：
+
+| Agent | 默认安装位置 |
+| --- | --- |
+| Codex | `~/.codex/skills/visual-prompt-cookbook` |
+| Claude Code | `~/.claude/skills/visual-prompt-cookbook` |
+| Cursor | `~/.cursor/skills/visual-prompt-cookbook` |
+| Gemini CLI | `~/.gemini/extensions/visual-prompt-cookbook` |
+| OpenCode | `~/.config/opencode/skills/visual-prompt-cookbook` |
+| Windsurf | `~/.codeium/windsurf/skills/visual-prompt-cookbook` |
+| OpenClaw | `~/.openclaw-autoclaw/skills/visual-prompt-cookbook` |
+
+安装到所有内置目标：
+
+```bash
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent all
+```
+
+安装到自定义目录：
+
+```bash
+uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install \
+  --agent custom \
+  --target-root ~/.agents/skills
+```
+
+## 使用
+
+安装后，重启对应 agent，让它重新加载本地 skill。之后可以直接说：
 
 ```text
 帮我做一张适合小红书封面的视觉提示词
@@ -30,18 +71,14 @@ uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
 
 ## 更新
 
-重新运行同一条命令即可覆盖安装到最新版：
-
-```bash
-uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
-```
+重新运行同一条安装命令即可覆盖安装到最新版。
 
 ## 这个 Skill 做什么
 
 - 从 `AI-Visual-Prompt-Cookbook` 整理出一批视觉风格。
 - 提供本地 dashboard，方便浏览、筛选和选择风格。
-- 让 Codex 根据你要做的图片主动补全风格变量。
-- 默认输出完整提示词；只有你明确要求生成图片时，Codex 才会继续调用图像生成能力。
+- 让 agent 根据你要做的图片主动补全风格变量。
+- 默认输出完整提示词；只有你明确要求生成图片时，agent 才会继续调用图像生成能力。
 
 ## 开发者命令
 
@@ -50,9 +87,9 @@ uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install-skill
 从本地 checkout 安装：
 
 ```bash
-uv run visualai-install-skill \
-  --source-root skills/visual-prompt-cookbook \
-  --skills-root ~/.codex/skills
+uv run visualai-install \
+  --agent codex \
+  --source-root skills/visual-prompt-cookbook
 ```
 
 同步上游 Cookbook：

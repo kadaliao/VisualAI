@@ -19,7 +19,7 @@ SPECIAL_TEMPLATE_VALUES = {
 DASHBOARD_LANGUAGES = {"auto", "en", "zh-CN"}
 DASHBOARD_ZH_FALLBACK_SUMMARY = (
     "来自 upstream 的新风格。当前还没有人工中文摘要；可先通过预览图判断视觉方向，"
-    "选择后 Codex 会读取原始风格定义并生成可用提示词。"
+    "选择后当前 agent 会读取原始风格定义并生成可用提示词。"
 )
 DASHBOARD_ZH_TAGS = {
     "poster": "海报",

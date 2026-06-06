@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
 import tempfile
 import urllib.request
 import zipfile
+from dataclasses import dataclass
 from pathlib import Path
 
 
@@ -13,13 +15,83 @@ SKILL_RELATIVE_PATH = Path("skills") / SKILL_NAME
 DEFAULT_ARCHIVE_URL = "https://github.com/kadaliao/VisualAI/archive/refs/heads/main.zip"
 
 
+@dataclass(frozen=True)
+class AgentTarget:
+    name: str
+    label: str
+    default_root: Path | None
+    layout: str
+    note: str
+
+
+AGENTS: dict[str, AgentTarget] = {
+    "codex": AgentTarget(
+        name="codex",
+        label="Codex",
+        default_root=Path(".codex") / "skills",
+        layout="skill",
+        note="Installs to ~/.codex/skills.",
+    ),
+    "claude": AgentTarget(
+        name="claude",
+        label="Claude Code",
+        default_root=Path(".claude") / "skills",
+        layout="skill",
+        note="Installs to ~/.claude/skills.",
+    ),
+    "cursor": AgentTarget(
+        name="cursor",
+        label="Cursor",
+        default_root=Path(".cursor") / "skills",
+        layout="skill",
+        note="Installs to ~/.cursor/skills.",
+    ),
+    "gemini": AgentTarget(
+        name="gemini",
+        label="Gemini CLI",
+        default_root=Path(".gemini") / "extensions",
+        layout="gemini-extension",
+        note="Installs as a Gemini extension under ~/.gemini/extensions.",
+    ),
+    "opencode": AgentTarget(
+        name="opencode",
+        label="OpenCode",
+        default_root=Path(".config") / "opencode" / "skills",
+        layout="skill",
+        note="Installs to ~/.config/opencode/skills.",
+    ),
+    "windsurf": AgentTarget(
+        name="windsurf",
+        label="Windsurf",
+        default_root=Path(".codeium") / "windsurf" / "skills",
+        layout="skill",
+        note="Installs to ~/.codeium/windsurf/skills.",
+    ),
+    "openclaw": AgentTarget(
+        name="openclaw",
+        label="OpenClaw",
+        default_root=Path(".openclaw-autoclaw") / "skills",
+        layout="skill",
+        note="Installs to ~/.openclaw-autoclaw/skills.",
+    ),
+    "custom": AgentTarget(
+        name="custom",
+        label="Custom directory",
+        default_root=None,
+        layout="skill",
+        note="Installs to a directory passed with --target-root.",
+    ),
+}
+INSTALL_ALL_AGENTS = ("codex", "claude", "cursor", "gemini", "opencode", "windsurf", "openclaw")
+
+
 def default_local_skill_root() -> Path:
     return Path(__file__).resolve().parents[1] / SKILL_RELATIVE_PATH
 
 
 def assert_skill_root(path: Path) -> Path:
     if not (path / "SKILL.md").is_file():
-        raise FileNotFoundError(f"Missing Codex skill at {path}")
+        raise FileNotFoundError(f"Missing skill at {path}")
     return path
 
 
@@ -40,9 +112,8 @@ def download_skill_root(archive_url: str, work_dir: Path) -> Path:
     return find_archived_skill_root(extract_root)
 
 
-def install_skill_tree(source_root: Path, skills_root: Path) -> Path:
+def copy_skill_tree(source_root: Path, target: Path) -> Path:
     source_root = assert_skill_root(source_root)
-    target = skills_root / SKILL_NAME
     if target.exists():
         shutil.rmtree(target)
 
@@ -53,8 +124,122 @@ def install_skill_tree(source_root: Path, skills_root: Path) -> Path:
     return target
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Install visual-prompt-cookbook into local Codex skills.")
+def install_skill_tree(source_root: Path, skills_root: Path) -> Path:
+    return copy_skill_tree(source_root, skills_root / SKILL_NAME)
+
+
+def write_gemini_extension_manifest(extension_root: Path) -> None:
+    manifest = {
+        "name": SKILL_NAME,
+        "version": "0.1.0",
+        "description": "Visual prompt cookbook skill for generating image prompts.",
+        "contextFileName": "GEMINI.md",
+    }
+    extension_root.mkdir(parents=True, exist_ok=True)
+    (extension_root / "gemini-extension.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (extension_root / "GEMINI.md").write_text(
+        "\n".join(
+            [
+                "# visual-prompt-cookbook",
+                "",
+                "Use the bundled skill at `skills/visual-prompt-cookbook/SKILL.md` for visual prompt workflows.",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+
+def install_for_agent(source_root: Path, target_root: Path, agent: AgentTarget) -> Path:
+    if agent.layout == "gemini-extension":
+        extension_root = target_root / SKILL_NAME
+        if extension_root.exists():
+            shutil.rmtree(extension_root)
+        installed = copy_skill_tree(source_root, extension_root / "skills" / SKILL_NAME)
+        write_gemini_extension_manifest(extension_root)
+        return installed
+    return install_skill_tree(source_root, target_root)
+
+
+def resolve_target_root(agent: AgentTarget, home: Path, target_root: Path | None) -> Path:
+    if target_root is not None:
+        return target_root.expanduser().resolve()
+    if agent.default_root is None:
+        raise ValueError(f"--target-root is required for --agent {agent.name}")
+    return (home / agent.default_root).expanduser().resolve()
+
+
+def parse_agent(value: str) -> str:
+    normalized = value.strip().lower()
+    if normalized == "all" or normalized in AGENTS:
+        return normalized
+    valid = ", ".join([*AGENTS.keys(), "all"])
+    raise argparse.ArgumentTypeError(f"unknown agent {value!r}; choose one of: {valid}")
+
+
+def list_agents() -> str:
+    lines = ["Available agents:"]
+    for agent in AGENTS.values():
+        lines.append(f"  {agent.name:<9} {agent.label:<18} {agent.note}")
+    lines.append("  all       All built-in agents  Installs to every built-in target above except custom.")
+    return "\n".join(lines)
+
+
+def choose_agent_interactively() -> str:
+    choices = [*AGENTS.keys(), "all"]
+    print(list_agents())
+    print()
+    while True:
+        try:
+            selected = input("Choose an agent [codex]: ").strip().lower() or "codex"
+        except EOFError:
+            return "codex"
+        if selected in choices:
+            return selected
+        print(f"Unknown agent {selected!r}.")
+
+
+def resolve_source_root(source_root: Path | None, archive_url: str | None) -> tuple[Path, tempfile.TemporaryDirectory[str] | None]:
+    if source_root and archive_url:
+        raise ValueError("--source-root and --archive-url cannot be used together")
+    if source_root:
+        return assert_skill_root(source_root.expanduser().resolve()), None
+    if archive_url:
+        tmp = tempfile.TemporaryDirectory()
+        return download_skill_root(archive_url, Path(tmp.name)), tmp
+
+    local_source = default_local_skill_root()
+    if (local_source / "SKILL.md").is_file():
+        return assert_skill_root(local_source.resolve()), None
+
+    tmp = tempfile.TemporaryDirectory()
+    return download_skill_root(DEFAULT_ARCHIVE_URL, Path(tmp.name)), tmp
+
+
+def install_selected_agents(
+    *,
+    selected_agent: str,
+    source_root: Path,
+    home: Path,
+    target_root: Path | None,
+) -> list[tuple[AgentTarget, Path]]:
+    agent_names = INSTALL_ALL_AGENTS if selected_agent == "all" else (selected_agent,)
+    results: list[tuple[AgentTarget, Path]] = []
+    for agent_name in agent_names:
+        agent = AGENTS[agent_name]
+        resolved_target_root = resolve_target_root(agent, home, target_root)
+        installed = install_for_agent(source_root, resolved_target_root, agent)
+        results.append((agent, installed))
+    return results
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Install visual-prompt-cookbook for your AI agent.")
+    parser.add_argument("--agent", type=parse_agent, help="Agent to install for. Use --list-agents to see choices.")
+    parser.add_argument("--list-agents", action="store_true", help="List supported agents and exit.")
     parser.add_argument("--source-root", type=Path, help="Install from a local skill directory.")
     parser.add_argument(
         "--archive-url",
@@ -63,29 +248,41 @@ def main() -> None:
             f"checkout when available, otherwise downloads {DEFAULT_ARCHIVE_URL}."
         ),
     )
-    parser.add_argument("--skills-root", type=Path, default=Path.home() / ".codex" / "skills")
+    parser.add_argument("--target-root", type=Path, help="Override the selected agent's target root directory.")
+    parser.add_argument("--home", type=Path, default=Path.home(), help=argparse.SUPPRESS)
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
     args = parser.parse_args()
 
-    if args.source_root and args.archive_url:
-        parser.error("--source-root and --archive-url cannot be used together")
+    if args.list_agents:
+        print(list_agents())
+        return
 
-    skills_root = args.skills_root.expanduser().resolve()
-    if args.source_root:
-        target = install_skill_tree(args.source_root.expanduser().resolve(), skills_root)
-    elif args.archive_url:
-        with tempfile.TemporaryDirectory() as tmp:
-            source_root = download_skill_root(args.archive_url, Path(tmp))
-            target = install_skill_tree(source_root, skills_root)
-    else:
-        local_source = default_local_skill_root()
-        if (local_source / "SKILL.md").is_file():
-            target = install_skill_tree(local_source.resolve(), skills_root)
-        else:
-            with tempfile.TemporaryDirectory() as tmp:
-                source_root = download_skill_root(DEFAULT_ARCHIVE_URL, Path(tmp))
-                target = install_skill_tree(source_root, skills_root)
+    selected_agent = args.agent
+    if selected_agent is None:
+        selected_agent = choose_agent_interactively()
 
-    print(f"Installed visual-prompt-cookbook to {target}")
+    target_root = args.target_root
+    try:
+        source_root, tmp = resolve_source_root(args.source_root, args.archive_url)
+        try:
+            results = install_selected_agents(
+                selected_agent=selected_agent,
+                source_root=source_root,
+                home=args.home.expanduser().resolve(),
+                target_root=target_root,
+            )
+        finally:
+            if tmp is not None:
+                tmp.cleanup()
+    except (OSError, ValueError) as exc:
+        parser.exit(1, f"error: {exc}\n")
+
+    for agent, installed in results:
+        print(f"Installed {SKILL_NAME} for {agent.label} to {installed}")
 
 
 if __name__ == "__main__":
