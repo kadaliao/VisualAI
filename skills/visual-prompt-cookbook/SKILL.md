@@ -1,11 +1,16 @@
 ---
 name: visual-prompt-cookbook
-description: Use when the user wants to make, draw, generate, or design an image; asks in Chinese for 作图、画图、出图、做图、海报、封面、配图、广告图、社媒图、视觉稿、图片提示词; wants refined AI image prompts, posters, ads, covers, social visuals, or reuse AI Visual Prompt Cookbook styles. Helps browse styles in a local dashboard, select a style, collect the subject/content brief, infer variables, render final prompts, and optionally hand off to image generation when explicitly requested.
+description: Explicit-invocation-only image prompt builder. Use only when the user explicitly names this skill, for example "$visual-prompt-cookbook" or "visual prompt cookbook". Never self-select it, and never trigger it from general image intent such as 作图、画图、出图、做图、海报、封面、配图、广告图、社媒图、视觉稿、图片提示词 or from a request for AI image prompts. When explicitly invoked, it browses styles in a local dashboard, collects the subject/content brief, infers variables, and renders the final prompt.
 ---
+
 
 # Visual Prompt Cookbook
 
 Use this skill to turn AI Visual Prompt Cookbook styles into usable image prompts.
+
+## Invocation Policy
+
+Run this skill only when the user explicitly invokes it, such as `$visual-prompt-cookbook`, "visual prompt cookbook", or an equivalent direct request to use this skill. Never start this workflow because a request merely involves images, posters, covers, captions, image prompts, or visual design.
 
 ## Workflow
 
