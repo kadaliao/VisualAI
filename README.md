@@ -21,16 +21,18 @@ uvx --from git+https://github.com/kadaliao/VisualAI.git visualai-install --agent
 
 ## 使用
 
-安装后重启对应 agent，然后直接说：
+这个 skill 只在显式调用时生效，不会被普通的作图、海报、封面请求自动触发。
+
+安装后重启对应 agent，然后按名字调用：
 
 ```text
-帮我做一张适合小红书封面的视觉提示词
+$visual-prompt-cookbook 帮我做一张适合小红书封面的视觉提示词
 ```
 
 需要看风格库时说：
 
 ```text
-打开 visual-prompt-cookbook 的风格 dashboard
+$visual-prompt-cookbook 打开风格 dashboard
 ```
 
 更新到最新版时，重新运行安装命令即可。
