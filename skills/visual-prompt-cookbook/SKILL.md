@@ -1,6 +1,6 @@
 ---
 name: visual-prompt-cookbook
-description: Explicit-invocation-only image prompt builder. Use only when the user explicitly names this skill, for example "$visual-prompt-cookbook" or "visual prompt cookbook". Never self-select it, and never trigger it from general image intent such as 作图、画图、出图、做图、海报、封面、配图、广告图、社媒图、视觉稿、图片提示词 or from a request for AI image prompts. When explicitly invoked, it browses styles in a local dashboard, collects the subject/content brief, infers variables, and renders the final prompt.
+description: Explicit-invocation-only skill. Use it only when the user explicitly invokes $visual-prompt-cookbook by name, and never select it on your own. When invoked, it browses AI Visual Prompt Cookbook styles in a local dashboard, collects the subject/content brief, infers variables, and renders the final image prompt.
 ---
 
 

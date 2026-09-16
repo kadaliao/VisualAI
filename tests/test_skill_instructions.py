@@ -29,7 +29,9 @@ class SkillInstructionTests(unittest.TestCase):
         description = skill_text.split("---")[1]
 
         self.assertIn("Explicit-invocation-only", description)
-        self.assertIn("Never self-select it", description)
+        self.assertIn("never select it on your own", description)
+        for keyword in ("作图", "画图", "出图", "海报", "封面", "配图", "图片提示词"):
+            self.assertNotIn(keyword, description)
 
 
 if __name__ == "__main__":
