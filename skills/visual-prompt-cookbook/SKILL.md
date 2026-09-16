@@ -3,7 +3,6 @@ name: visual-prompt-cookbook
 description: Explicit-invocation-only skill. Use it only when the user explicitly invokes $visual-prompt-cookbook by name, and never select it on your own. When invoked, it browses AI Visual Prompt Cookbook styles in a local dashboard, collects the subject/content brief, infers variables, and renders the final image prompt.
 ---
 
-
 # Visual Prompt Cookbook
 
 Use this skill to turn AI Visual Prompt Cookbook styles into usable image prompts.
